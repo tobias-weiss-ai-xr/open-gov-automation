@@ -71,7 +71,7 @@ Löschung automatisiert nach Ablauf via Cron-Job (`scripts/purge-expired.ts`).
 
 ## 8. Technische Umsetzung (open-gov-automation)
 
-- **On-Premise**: 3× Mesh-Cluster im Rathaus (keine Cloud)
+- **On-Premise**: 2 gekoppelte Geräte (GX10) im Rathaus – lokale KI-Einheit (keine Cloud)
 - **Verschlüsselung**: TLS 1.3 + AES-256 (ruhende Daten)
 - **Trennung**: Mandantenisolation via `tenantId`
 - **Audit-Log**: Jede Änderung protokolliert (ADR 0012)

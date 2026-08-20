@@ -3,7 +3,7 @@
 **Einfach erklärt:** TOMs = Technische und organisatorische Maßnahmen (Art. 32 DSGVO). Damit wird festgelegt, wie personenbezogene Daten technisch und organisatorisch geschützt werden.
 
 > DSGVO Art. 32 — Maßnahmen zum Schutz der Verarbeitung
-> Exemplarisch für **open-gov-automation** (3× Mesh-Cluster, On-Premise)
+> Exemplarisch für **open-gov-automation** (2 gekoppelte GX10, lokale KI-Einheit, On-Premise)
 
 ## Maßnahmenkatalog
 
