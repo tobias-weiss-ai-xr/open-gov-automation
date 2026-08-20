@@ -22,7 +22,6 @@ Wir wenden die Unix-Philosophie auf Verwaltungssysteme an:
 ### 1. **Jedes Modul macht eine Sache gut**
 ```
 Verwaltung
-├── Bürgerportal (ein Modul)
 ├── Fördermittel (ein Modul)
 ├── Bauanträge (ein Modul)
 └── Jede Schnittstelle ist textbasiert (API/JSON)

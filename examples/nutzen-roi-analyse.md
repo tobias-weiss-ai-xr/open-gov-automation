@@ -53,26 +53,12 @@ Besser als Zusatz-Modul, nicht als Lead.
 
 ---
 
-## 3. Bürgerportal — commoditized, überlappt mit openDesk
-
-| Aspekt | Bewertung |
-|--------|-----------|
-| Schmerz | Papier, keine Status-Tracking, viele Ämter |
-| Benefit (€) | 0,5–4k €/Jahr (Selbstbedienung spart Telefon/Schalter) |
-| **Konkurrenz** | openDesk, viele SaaS — Funktions-Overlap hoch |
-| USP | Open Source + souverän (echt, aber funktional austauschbar) |
-
-**Urteil:** Wichtig für Bürger-Akzeptanz, aber schwächstes ROI.
-Nicht als Alleinstellungsmerkmal verkaufen.
-
----
-
-## 4. Cross-Modul ROI — 60k-Pilot
+## 3. Cross-Modul ROI — 60k-Pilot
 
 ### Szenario A — Kleinstadt (~10k EW, Beispiel aus Skizze)
 | Szenario | Direkte Ersparnis/Jahr | Payback (60k) | Fazit |
 |----------|------------------------|---------------|-------|
-| Nur A (Bearbeitung) + Bau + Bürger | 2k–10k € | > 6 Jahre | ❌ rechnet sich nicht |
+| Nur A (Bearbeitung) + Bauanträge | 2k–10k € | > 6 Jahre | ❌ rechnet sich nicht |
 | **B (Finding) führt** | 10k–150k € | < 1–5 Jahre | ✅ nur mit Finding |
 | + Portfolio-Skalierung | Kosten/Commune sinken | Pilot wird Vorlage | ✅ Business-Case |
 
@@ -81,7 +67,6 @@ Nicht als Alleinstellungsmerkmal verkaufen.
 |------|--------------|------------------|---------|
 | Förder-Finding (B) | mehrere Mio € Förderung | 5% verpasst = **100k–500k €/Jahr** | **< 1 Jahr** ✅ |
 | Bauanträge | 500–1.500 Anträge/Jahr | Assist spart **50k–200k €/Jahr** (Personal) | < 1 Jahr ✅ |
-| Bürgerportal | hohes Kontaktvolumen | **20k–80k €/Jahr** (Schalter/Telefon) | 1–2 Jahre ✅ |
 
 **Kern-Erkenntnis (korrigiert):** Für EINE **Kleinstadt** rechnet sich das 60k-Paket
 kaum auf reine Ersparnis. Für eine **Mittelstadt (Gießen/Marburg)** rechnet es sich
@@ -91,23 +76,23 @@ Portfolio-Skalierung auf Kleinstädte.
 
 ---
 
-## 5. Kritische Lücken (muss vor Vertrieb geklärt sein)
+## 4. Kritische Lücken (muss vor Vertrieb geklärt sein)
 
 1. **Fördermittel A vs B** — Use Case definieren, sonst widersprüchliche Pitch.
 2. **0 Evidenz** — keine Kunden, keine gemessenen Ersparnisse. Finding-ROI ist Hypothese.
 3. **Haftung Bauanträge** — autonome Prüfung rechtlich riskant; nur assistiv.
-4. **Bürgerportal-Overlap** — offenDesk bereits vorhanden; Differenzierung nur "souverän".
-5. **Vergaberecht (Stadt)** — 60k liegt unter EU-Schwellenwert → «freihändige Vergabe»
+4. **Vergaberecht (Stadt)** — 60k liegt unter EU-Schwellenwert → «freihändige Vergabe»
    möglich, aber Stadt hat mehr Stakeholder + evtl. Bestands-SaaS (Integration prüfen).
-6. **Scope** — Stadt-Pilot ggf. als einzelne Verwaltungseinheit (Amtsbereich), nicht Gesamtstadt.
+5. **Scope** — Stadt-Pilot ggf. als einzelne Verwaltungseinheit (Amtsbereich), nicht Gesamtstadt.
 
 ---
 
-## 6. Empfehlung
+## 5. Empfehlung
 
 **Lead-Pitch:** *Fördermittel-Finding (B)* — konkreter Painkiller, stärkste ROI-Story.
 **Pilot-Träger:** **Stadt Gießen oder Marburg** (hohe ROI, Uni-Orbit) — oder Kleinstadt
 (Lich/Kirchhain/Schotten) mit Portfolio-Skalierung als Business-Case.
+**Zusatz-Modul:** Bauanträge als prädiktive Qualität (nicht €-ROI).
 **Vor dem Anschreiben:** 1–2 Referenz-Kommunen mit echten Förder-Daten (Evidence!) gewinnen.
 
 ---

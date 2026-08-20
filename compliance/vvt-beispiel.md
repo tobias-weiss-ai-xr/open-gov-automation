@@ -1,5 +1,7 @@
 # VVT — Verzeichnis von Verarbeitungstätigkeiten (Beispiel)
 
+**Einfach erklärt:** VVT = Verzeichnis von Verarbeitungstätigkeiten (Art. 30 DSGVO). Die Kommune führt darin ein internes Register, welche Bürgerdaten sie zu welchem Zweck verarbeitet.
+
 > DSGVO Art. 30 — Exemplarisch für das Modul **Fördermittel-Management**
 
 ## Metadaten

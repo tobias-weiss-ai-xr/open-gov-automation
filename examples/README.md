@@ -1,4 +1,4 @@
-# Examples — Verwaltung 2.0
+# Examples — open-gov-automation
 
 ## Anwendung der Unix-Prinzipien auf öffentliche Verwaltungen
 
@@ -6,57 +6,57 @@
 
 | Dokument | Zweck | Prinzip |
 |----------|-------|---------|
+| [60k-Projekt-Skizze](60k-mesh-cluster-projekt.md) | 60k-Pilot: 2× lokale Geräte, Bauanträge als Beispiel | Referenz-Implementierung |
+| [Mittelhessen-Kandidaten](mittelhessen-pilot-kandidaten.md) | Shortlist Mittelhessen (Städte + Kleinstädte) | Engagement / Akquise |
+| [Nutzen-ROI-Analyse](nutzen-roi-analyse.md) | Kritische Wirtschaftlichkeitsprüfung der Module | Transparenz |
+| [Monte-Carlo-Ergebnis](bauantraege-monte-carlo-ergebnis.md) | Bayesian Monte Carlo Bauanträge (Beweis) | Evidenz |
 | [admin-fördermittel-ci.yml](admin-fördermittel-ci.yml) | CI-Pipeline für Fördermittel-Verwaltung | Automatisierte Qualität |
-| [60k-mesh-cluster-projekt.md](60k-mesh-cluster-projekt.md) | 60k-Projekt-Skizze: 3× Mesh-Cluster für kleine Kommune | Referenz-Implementierung |
-| [mittelhessen-pilot-kandidaten.md](mittelhessen-pilot-kandidaten.md) | Shortlist Mittelhessen (Top 10, 5–20k EW) | Engagement / Akquise |
 
 ### Übergeordnete Dokumente
 
 | Dokument | Ort |
 |----------|-----|
-| Manifest | [`../MANIFEST.md`](../MANIFEST.md) |
-| Verwaltungs-Prinzipien | [`../ADMIN-VALUES.md`](../ADMIN-VALUES.md) |
-| ADR 0012 | [`../adr/0012-unix-philosophy-for-public-admin.md`](../adr/0012-unix-philosophy-for-public-admin.md) |
+| Prinzipien & Prozess | [`../README.md`](../README.md) |
+| ADR 0012 (Architektur-Entscheidung) | [`../adr/0012-unix-philosophy-for-public-admin.md`](../adr/0012-unix-philosophy-for-public-admin.md) |
 
 ---
 
-## Wie du diese Beispiele verwendest
+## Wie Sie diese Beispiele verwenden
 
-### 1. CI-Pipeline adaptieren
+### 1. CI-Pipeline anpassen
 
 ```bash
-# Kopiere die Pipeline für dein Fachverfahren
+# Kopieren Sie die Pipeline für Ihr Fachverfahren
 cp admin-fördermittel-ci.yml .github/workflows/bauantraege-ci.yml
 
-# Passe die Jobs an deine Anwendungsfälle an
-# - validate:prüfe-deine-geschäftsregeln
-# - check-deadlines:prüfe-deine-fristen
+# Passe die Prüfschritte an Ihren Anwendungsfall an
+# - validate: prüfe Ihre Geschäftsregeln
+# - check-deadlines: prüfe Ihre Fristen
 ```
 
 ### 2. Modulare Struktur übernehmen
 
 ```bash
-# Erstelle die Verzeichnisstruktur für dein Fachverfahren
-mkdir -p bauantraege/src/{adapters,scoring,deadlines,applications,api}
-mkdir -p bauantraege/tests/{adapters,scoring,deadlines,applications}
+# Verzeichnisstruktur für Ihr Fachverfahren anlegen
+mkdir -p bauantraege/src/{adapters,scoring,deadlines}
+mkdir -p bauantraege/tests
 mkdir -p bauantraege/docs/ADR
-
-# Folge dem Pattern aus foerdermittel-module.md
 ```
 
 ### 3. Prinzipien anwenden
 
-Nutze die Checkliste aus [`ADMIN-VALUES.md`](../ADMIN-VALUES.md):
+Prüfen Sie vor jeder neuen Software:
 
-- [ ] Ist es Open Source?
-- [ ] Kann es On-Premise laufen?
-- [ ] Gibt es API-Schnittstellen?
+- [ ] Ist sie Open Source?
+- [ ] Kann sie lokal (On-Premise) laufen?
+- [ ] Hat sie klare Schnittstellen (API)?
 - [ ] Ist der Code testbar?
-- [ ] Kann es durch ein anderes Modul ersetzt werden?
+- [ ] Kann sie durch ein anderes Modul ersetzt werden?
 
 ---
 
 ## Nächste Schritte
 
-- [x] Beispiel für Fördermittel hinzufügen
-- [ ] CI-Pipeline-Templates für verschiedene Use Cases
+- [x] Fördermittel-Beispiel vorhanden
+- [x] 60k-Pilot-Skizze vorhanden
+- [ ] Weitere Modul-Vorlagen

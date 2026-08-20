@@ -1,5 +1,7 @@
 # TOMs — Technische und organisatorische Maßnahmen (Beispiel)
 
+**Einfach erklärt:** TOMs = Technische und organisatorische Maßnahmen (Art. 32 DSGVO). Damit wird festgelegt, wie personenbezogene Daten technisch und organisatorisch geschützt werden.
+
 > DSGVO Art. 32 — Maßnahmen zum Schutz der Verarbeitung
 > Exemplarisch für **open-gov-automation** (3× Mesh-Cluster, On-Premise)
 
@@ -36,7 +38,7 @@ MaxAuthTries 3
 ```typescript
 // RBAC: Rolle prüft Berechtigung pro Modul
 interface Permission {
-  module: 'foerdermittel' | 'bauantraege' | 'buergerportal';
+  module: 'foerdermittel' | 'bauantraege';
   action: 'read' | 'write' | 'approve';
 }
 // JWT enthält: { sub, orgId, roles: Permission[], exp: 15min }

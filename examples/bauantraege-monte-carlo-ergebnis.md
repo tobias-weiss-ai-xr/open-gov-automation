@@ -51,7 +51,7 @@ sich nach oben und wird schmaler (Unsicherheit sinkt).
 - **Assistiv zwingend:** Autonome Baurecht-Prüfung = Haftung. Nur Vorab-Check zulässig.
   Die 30%-Ersparnis setzen *unterstützte* Bearbeitung voraus, keine Vollautomatik.
 - **Nur 1 Modul:** 60k deckt alle 3 Module. Bauanträge trägt sich allein;
-  Bürgerportal/Fördermittel sind Zusatz (Service), nicht zwingend €-ROI.
+  Fördermittel ist Zusatz (Service), nicht zwingend €-ROI.
 - **Prior = Hypothese:** Keine echten Messwerte. Pilot muss Saving-Fraction validieren.
 - **Stadt-Skala nötig:** Bei Kleinstadt (10k) fällt Volumen → ROI schwächer (siehe ROI-Analyse).
 
@@ -65,3 +65,12 @@ Empfehlung: **Lead-Beispiel für Pilot-Angebot = Bauanträge (Gießen/Marburg).*
 
 ---
 *Unix-Prinzip: Script = eine Sache (ROI simulieren), reproduzierbar, quelloffen.*
+
+---
+
+## Begriffe einfach erklärt
+
+- **NPV (Kapitalwert):** Wie viel Euro das Projekt über 5 Jahre wirklich einbringt, abzüglich der Kosten – auf heute gerechnet.
+- **Monte-Carlo-Simulation:** Wir rechnen das Szenario 50.000 Mal mit leicht unterschiedlichen Annahmen durch, um eine realistische Spanne statt einer falschen Sicherheit zu bekommen.
+- **Prior / Posterior:** Unsere Einschätzung vor bzw. nach ersten Pilot-Daten.
+- **Perzentil:** Grenzwert, unterhalb dessen ein bestimmter Anteil der Fälle liegt (5 % = unser schlechtester angenommener Fall).

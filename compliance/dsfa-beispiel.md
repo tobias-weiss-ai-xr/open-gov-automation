@@ -1,7 +1,9 @@
 # DSFA — Datenschutz-Folgenabschätzung (Beispiel)
 
-> DSGVO Art. 35 — Exemplarisch für das Modul **Bürgerportal**
-> (Verarbeitung im öffentlichen Interesse, betroffene Personen: alle Bürger)
+**Einfach erklärt:** DSFA = Datenschutz-Folgenabschätzung (Art. 35 DSGVO). Sie prüft vorab, ob eine Datenverarbeitung ein hohes Risiko für betroffene Personen birgt.
+
+> DSGVO Art. 35 — Exemplarisch für das Modul **Bauanträge**
+> (Verwaltungsleistung, betroffene Personen: Antragstellende)
 
 ## 1. Prüfung der DSFA-Pflicht
 
@@ -17,15 +19,15 @@
 
 ## 2. Beschreibung der Verarbeitung
 
-- **Zweck:** Online-Dienste (Anmeldung, Umzug, Pass)
-- **Umfang:** ~5.200 Bürger, 3 Module
-- **Technik:** 3× Mesh-Cluster, On-Premise, Open Source
+- **Zweck:** Bauantragsprüfung & -genehmigung (prädiktive Vorab-Prüfung)
+- **Umfang:** ~Antragstellende, 2 Module (Fördermittel, Bauanträge)
+- **Technik:** 2× Mesh-Cluster (GX10), On-Premise, Open Source
 
 ## 3. Notwendigkeit & Verhältnismäßigkeit
 
 | Maßstab | Bewertung |
 |---------|-----------|
-| Zweckbindung | ✅ Klar definiert (Bürgerdienste) |
+| Zweckbindung | ✅ Klar definiert (Verwaltungsleistung Bau) |
 | Datenminimierung | ✅ Nur Pflichtfelder, keine Optional-Daten |
 | Speicherbegrenzung | ✅ Auto-Löschung nach Frist |
 
@@ -45,7 +47,7 @@
 - Privacy by Design: Datenminimierung im Datenmodell
 - Privacy by Default: Opt-in für alle Nicht-Pflichtfelder
 - Transparenz: Quellcode öffentlich einsehbar
-- Betroffenenrechte: Self-Service-Löschantrag im Portal
+- Betroffenenrechte: Löschantrag über Verwaltung
 
 ## 6. Konsultation
 
