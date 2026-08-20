@@ -1,8 +1,7 @@
-# 60k-Pilot — Lokale KI für die Verwaltung (Beispiel: Bauanträge)
+# 60k-Pilot — Lokale KI-Einheit für Kommunen
 
-> Beispielhafte Ausgangslage: eine Mittelstadt (z. B. Gießen oder Marburg, ~90.000 Einwohner)
-> oder eine kleine Kommune als Verwaltungseinheit.
-> open-gov-automation Pilot — On-Premise, souverän, modular.
+> Zielgruppe: Mittelstadt (z. B. Gießen oder Marburg, ~90.000 Einwohner)
+> oder Verwaltungseinheit. On-Premise, souverän, modular.
 
 ---
 
@@ -22,8 +21,7 @@ einer lokalen KI-Einheit, hochverfügbar und ohne Abhängigkeit von externen Anb
 └──────────────────────────────────────────────────────┘
 ```
 
-Keine unterbrechungsfreie Stromversorgung (USV), kein Netzwerkspeicher (NAS), keine
-Cloud: Die zwei Geräte sind die gesamte Infrastruktur.
+Keine USV, kein NAS, keine Cloud: Die zwei Geräte bilden die gesamte Infrastruktur.
 
 ---
 
@@ -42,8 +40,7 @@ eine logische Einheit mit **~240 GB nutzbarem Speicher** (256 GB theoretisch) �
 *intelligentes* Modell lokal zu betreiben, ohne US-Cloud. DSGVO-konform von Grund auf.
 
 > **PoC bestätigt:** Zwei gekoppelte GB10-Geräte (DGX Spark) betreiben produktionserprobt
-ein fronthauben-taugliches Modell lokal – ohne Cloud. Details: `examples/poc-dual-spark-cluster.md`
-> (Quelle: graphwiz.ai, 2026).
+ein Modell lokal – ohne Cloud. (Quelle: graphwiz.ai, 2026).
 
 ---
 
@@ -53,7 +50,7 @@ ein fronthauben-taugliches Modell lokal – ohne Cloud. Details: `examples/poc-d
 |--------|-------------|--------|
 | Hardware | 2× GX10 + 2× 200Gb/s-Kabel | 8.298 € |
 | Expertise | Architektur, Einrichtung, CI/CD, Modul-Konfiguration, Bereitstellung | 45.000 € |
-| Schulung des Ansprechpartners | 2 Workshops + Handbuch + gemeinsames Arbeiten (Befähigung zur Eigenwartung) | 6.702 € |
+| Schulung der KI-Operatoren | 2 Workshops + Handbuch + praktische Übungen | 6.702 € |
 | **Gesamt** | | **60.000 €** |
 
 **Grundsatz:** Kein Blackbox-Produkt mit Wartungsvertrag, sondern
@@ -101,9 +98,9 @@ Die lokale KI wird **nicht** als reagierender Prozessor gebaut, sondern als
 
 ---
 
-## Baurecht im Detail (Beispiel Hessen)
+## Baurecht im Detail (Hessen)
 
-Damit das Beispiel konkret wird, prüft die KI reale Vorschriften. Für Hessen sind das
+Die KI prüft reale Vorschriften. Für Hessen sind das
 unter anderem:
 
 - **Abstandsflächen (§§ 5–9 Hessische Bauordnung):** Das geplante Gebäude muss einen
@@ -129,13 +126,12 @@ unsere DSGVO-Vorlagen greifen.)
 | Modul | Anwendungsfall | CI-Pipeline |
 |-------|---------------|-------------|
 | Fördermittel *(optionales Modul)* | Anbindung (Kommunalportal, EU), KI-Bewertung, Fristen | `examples/admin-fördermittel-ci.yml` |
-| Bauanträge *(Lead-Beispiel)* | **Vorausschauende** Baurecht-Prüfung (vorab) | (Vorlage) |
+| Bauanträge | **Vorausschauende** Baurecht-Prüfung (vorab) | - |
 
 Jedes Modul: eigenes Containerverfahren, eigener Datenbereich,
 eigene automatische Prüfung (Lint → Test → Validierung → Bereitstellung).
 
-**Hinweis:** Bauanträge ist das Lead-Beispiel dieser Skizze; Fördermittel bleibt
-optionales Zusatzmodul (nicht das quantitative Lead-Beispiel).
+**Hinweis:** Bauanträge ist das Hauptmodul; Fördermittel ist optional.
 
 ---
 
@@ -179,9 +175,9 @@ optionales Zusatzmodul (nicht das quantitative Lead-Beispiel).
 
 ## Wiederverwendbarkeit
 
-Diese Skizze ist eine **Vorlage**. Andere Kommunen kopieren:
-- `examples/60k-mesh-cluster-projekt.md` → eigene Variante
-- `compliance/*` → angepasste VVT/TOMs/DSFA
-- `examples/admin-fördermittel-ci.yml` → eigene Pipeline
+Diese Skizze dient als Vorlage. Andere Kommunen passen an:
+- Hardware-Spezifikationen
+- Module (Bauanträge, Fördermittel, etc.)
+- Compliance-Dokumente (TOMs, VVT, DSFA)
 
 **Unix-Prinzip:** Einmal gebaut, oft kopiert. **Souveränität:** Daten bleiben in der Kommune.

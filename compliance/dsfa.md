@@ -1,9 +1,8 @@
-# DSFA — Datenschutz-Folgenabschätzung (Beispiel)
+# Datenschutz-Folgenabschätzung (DSFA)
 
-**Einfach erklärt:** DSFA = Datenschutz-Folgenabschätzung (Art. 35 DSGVO). Sie prüft vorab, ob eine Datenverarbeitung ein hohes Risiko für betroffene Personen birgt.
+**DSGVO Art. 35** — Bewertung der Risiken für betroffene Personen durch die Verarbeitung personenbezogener Daten.
 
-> DSGVO Art. 35 — Exemplarisch für das Modul **Bauanträge**
-> (Verwaltungsleistung, betroffene Personen: Antragstellende)
+**Geltungsbereich:** Modul Bauanträge (Verwaltungsleistung, betroffene Personen: Antragstellende)
 
 ## 1. Prüfung der DSFA-Pflicht
 
@@ -59,8 +58,8 @@
 
 | Rolle | Unterschrift | Datum |
 |-------|--------------|-------|
-| Bürgermeister/in | ____________ | ______ |
-| Datenschutzbeauftragte/r | ____________ | ______ |
+| IT-Leitung | ____________ | ______ |
+| Datenschutzbeauftragter | ____________ | ______ |
 
 ---
 

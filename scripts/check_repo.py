@@ -17,6 +17,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FORBIDDEN = [
     "Bürgerportal", "3× Mesh", "3x Mesh",
     "MANIFEST.md", "ADMIN-VALUES.md", "verwaltung-2.0",
+    "bauantraege-monte-carlo", "nutzen-roi-analyse",
+    "poc-dual-spark", "foerdermittel-module",
+    "Beispiel", "beispiel",
 ]
 ERRORS = []
 

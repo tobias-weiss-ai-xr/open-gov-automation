@@ -71,5 +71,4 @@ Verwaltung
 ## Referenzen
 
 - CI-Pipeline: `.github/workflows/ci.yml`
-- Deployment: `DEPLOYMENT.md`
-- Architektur: `adr/0010-agent-centric-orchestration.md`
+- Dokumentation: [README.md](../README.md)

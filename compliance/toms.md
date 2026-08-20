@@ -1,9 +1,8 @@
-# TOMs — Technische und organisatorische Maßnahmen (Beispiel)
+# Technische und Organisatorische Maßnahmen (TOMs)
 
-**Einfach erklärt:** TOMs = Technische und organisatorische Maßnahmen (Art. 32 DSGVO). Damit wird festgelegt, wie personenbezogene Daten technisch und organisatorisch geschützt werden.
+**DSGVO Art. 32** — Maßnahmen zum Schutz der Verarbeitung personenbezogener Daten in open-gov-automation.
 
-> DSGVO Art. 32 — Maßnahmen zum Schutz der Verarbeitung
-> Exemplarisch für **open-gov-automation** (2 gekoppelte GX10, lokale KI-Einheit, On-Premise)
+**Geltungsbereich:** 2 gekoppelte GX10-Server, lokale KI-Einheit, On-Premise-Betrieb
 
 ## Maßnahmenkatalog
 
@@ -14,7 +13,7 @@
 | T3 | **Weitergabekontrolle** | TLS 1.3 zwischen Knoten, kein unverschlüsselter Export | ✅ |
 | T4 | **Eingabekontrolle** | Validierung aller Eingaben, Audit-Log pro Mutation | ✅ |
 | T5 | **Auftragskontrolle** | Keine Unterauftragsverarbeiter (reine Eigeninfrastruktur) | ✅ |
-| T6 | **Verfügbarkeitskontrolle** | 3-Knoten-Mesh, Auto-Failover, tägliche Backups | ✅ |
+| T6 | **Verfügbarkeitskontrolle** | 2-Knoten-Mesh, Auto-Failover, tägliche Backups | ✅ |
 | T7 | **Trennungsgebot** | Container-Isolation (Docker), separate DB pro Modul | ✅ |
 | T8 | **Pseudonymisierung** | Hash-IDs statt Klartext-Schlüssel in Logs | ✅ |
 
@@ -58,18 +57,16 @@ interface Permission {
 
 ```
 Knoten A ──┐
-           ├── Mesh (WireGuard) ── Load Balancer ── Bürger
-Knoten B ──┤
-           │
-Knoten C ──┘  (Failover < 30s bei Knoten-Ausfall)
+           ├── Mesh (WireGuard) ── Load Balancer ── Bürger/Verwaltung
+Knoten B ──┘  (Failover < 30s bei Knoten-Ausfall)
 ```
 
-- Tägliche Backups auf lokalen NAS (verschlüsselt)
+- Tägliche Backups (verschlüsselt, lokal)
 - Wöchentlicher Offsite-Test-Restore
 
 ## 6. Dokumentation der Maßnahmen
 
-Alle TOMs versioniert in Git (`compliance/toms-beispiel.md`).
+Alle TOMs versioniert in Git (`compliance/toms.md`).
 Änderungen via Pull-Request mit Review-Pflicht.
 
 ---

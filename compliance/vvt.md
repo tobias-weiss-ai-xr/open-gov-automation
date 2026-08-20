@@ -1,8 +1,8 @@
-# VVT — Verzeichnis von Verarbeitungstätigkeiten (Beispiel)
+# Verzeichnis von Verarbeitungstätigkeiten (VVT)
 
-**Einfach erklärt:** VVT = Verzeichnis von Verarbeitungstätigkeiten (Art. 30 DSGVO). Die Kommune führt darin ein internes Register, welche Bürgerdaten sie zu welchem Zweck verarbeitet.
+**DSGVO Art. 30** — Internes Register der Verarbeitungstätigkeiten personenbezogener Daten.
 
-> DSGVO Art. 30 — Exemplarisch für das Modul **Fördermittel-Management**
+**Modul:** Fördermittel-Management
 
 ## Metadaten
 
@@ -18,10 +18,10 @@
 
 ## 1. Verantwortliche Stelle
 
-**Name:** Gemeinde Musterstadt  
-**Vertreter:** Bürgermeister/in  
-**Anschrift:** Rathausplatz 1, 12345 Musterstadt  
-**Kontakt:** example@musterstadt.de
+**Name:** [Gemeinde Name]  
+**Vertreter:** [Bürgermeister/IT-Leitung]  
+**Anschrift:** [Rathausadresse]  
+**Kontakt:** [E-Mail]
 
 ## 2. Zweck der Verarbeitung
 
@@ -42,7 +42,7 @@ von Förderanträgen (Konjunktur, Klima, Soziales) für Bürger und Vereine.
 
 ## 5. Kategorien personenbezogener Daten
 
-| Datenkategorie | Beispiel | Besondere Kategorie (Art. 9)? |
+| Datenkategorie | Beschreibung | Besondere Kategorie (Art. 9)? |
 |----------------|----------|-------------------------------|
 | Stammdaten | Name, Anschrift, Geburtsdatum | Nein |
 | Kontaktdaten | E-Mail, Telefon | Nein |
@@ -67,7 +67,7 @@ von Förderanträgen (Konjunktur, Klima, Soziales) für Bürger und Vereine.
 | Antragsunterlagen | 10 Jahre | § 147 AO (steuerliche Aufbewahrung) |
 | Log-Daten / Audit | 3 Jahre | IT-Sicherheitskonzept |
 
-Löschung automatisiert nach Ablauf via Cron-Job (`scripts/purge-expired.ts`).
+Löschung automatisiert nach Ablauf.
 
 ## 8. Technische Umsetzung (open-gov-automation)
 
@@ -79,17 +79,4 @@ Löschung automatisiert nach Ablauf via Cron-Job (`scripts/purge-expired.ts`).
 
 ---
 
-## Vorlage zum Kopieren
 
-```markdown
-## [VVT-ID] — [Name der Verarbeitungstätigkeit]
-
-1. Verantwortliche Stelle:
-2. Zweck:
-3. Rechtsgrundlage:
-4. Betroffene Personen:
-5. Datenkategorien:
-6. Empfänger:
-7. Speicherdauer:
-8. Technische Umsetzung:
-```
