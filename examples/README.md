@@ -8,6 +8,7 @@
 |----------|-------|---------|
 | [admin-fördermittel-ci.yml](admin-fördermittel-ci.yml) | CI-Pipeline für Fördermittel-Verwaltung | Automatisierte Qualität |
 | [60k-mesh-cluster-projekt.md](60k-mesh-cluster-projekt.md) | 60k-Projekt-Skizze: 3× Mesh-Cluster für kleine Kommune | Referenz-Implementierung |
+| [mittelhessen-pilot-kandidaten.md](mittelhessen-pilot-kandidaten.md) | Shortlist Mittelhessen (Top 10, 5–20k EW) | Engagement / Akquise |
 
 ### Übergeordnete Dokumente
 

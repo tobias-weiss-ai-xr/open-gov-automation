@@ -49,12 +49,31 @@
 
 **Top-3 zum Anschreiben:** Lich, Kirchhain, Schotten (Score ≥ 16)
 
+## Tier 2 — Mittelstädte (Verwaltungseinheiten)
+
+> Auch **Stadt Gießen** (~90k) und **Stadt Marburg** (~76k) kommen als Pilot-Träger infrage —
+> ggf. als einzelne **Verwaltungseinheit/Amtsbereich**, nicht gleich die Gesamtstadt.
+> Höhere absolute ROI (siehe ROI-Analyse, Stadt-Szenario).
+
+| Gemeinde | EW | Fit-Begründung |
+|----------|----|----------------|
+| **Gießen** | ~90.000 | Uni-JLU-Orbit, forschungsnah, souveränitäts-offen; hohes Fördervolumen |
+| **Marburg** | ~76.000 | Uni-Marburg, studentische Hilfe, eGov-affine Verwaltung |
+| **Wetzlar** | ~53.000 | Lahn-Dill-Zentrum, industrienahe Verwaltung |
+
+**Vorteil Stadt-Skala:** Förder-Finding (B) triggert hier mehrere Mio €/Jahr Volumen →
+ROI bereits im Einzel-Pilot stark (Payback < 2 Jahre). Nachteil: mehr Stakeholder, evtl. Bestands-SaaS.
+
+**Anchor-Option:** Gießen oder Marburg als Pilot-Träger (höhere ROI als Kleinstadt).
+
 ## Nächster Schritt (Engagement-Prozess)
 
 1. **Verifizieren:** EW-Zahlen + Ratsmehrheiten (Gem.-Ratswahl 2021, bzw. 2026 sofern erfolgt)
 2. **Anschreiben** an Top-3 (siehe `pilot-angebot.md` — folgt)
 3. **2h-Workshop** vor Ort → 60k-Pilot-Angebot zuschneiden
 4. **Pilot** (6 Mon) → Go-Live → Referenz für weitere Mittelhessen-Kommunen
+
+---
 
 ---
 
