@@ -6,100 +6,532 @@
   <meta name="description" content="Open Government Automation — Unix-Philosophie für Kommunen. Transparent. Automatisiert. Souverän.">
   <title>open-gov-automation — Unix-Philosophie für Kommunen</title>
   <style>
+    /* ═══════════════════════════════════════════════════════
+       MATHEMATICAL FOUNDATION — Golden Ratio φ ≈ 1.618
+       All proportions derived from φ and Fibonacci sequence
+       ═══════════════════════════════════════════════════════ */
     :root {
-      --primary: #2563eb;
-      --text: #1f2937;
-      --bg: #f9fafb;
+      /* Golden Ratio φ = 1.618033988749895 */
+      --phi: 1.618;
+      --phi-inv: 0.618;
+      --phi-sq: 2.618;
+
+      /* Fibonacci scale: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89 */
+      --f-1: 0.618rem;
+      --f-2: 1rem;
+      --f-3: 1.618rem;
+      --f-5: 2.618rem;
+      --f-8: 4.236rem;
+      --f-13: 6.854rem;
+      --f-21: 11.09rem;
+
+      /* Type scale: φ-based modular scale */
+      --t-xs: 0.618rem;
+      --t-sm: 0.764rem;
+      --t-base: 1rem;
+      --t-md: 1.618rem;
+      --t-lg: 2.618rem;
+      --t-xl: 4.236rem;
+      --t-2xl: 6.854rem;
+
+      /* Colors — phi-weighted palette */
+      --ink: #0f172a;
+      --ink-soft: #334155;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --accent-glow: rgba(29, 78, 216, 0.08);
+      --gold: #b45309;
+      --gold-soft: #fef3c7;
+      --green: #15803d;
+      --green-soft: #dcfce7;
+      --slate: #475569;
+
+      /* Layout — φ proportions */
+      --max-width: 77.778rem;  /* 1200px / φ ≈ 742px golden section */
+      --content-width: 48.236rem; /* 777px — golden section of max */
+      --gutter: var(--f-3);
+      --radius: 0.618rem;
+      --radius-lg: 1rem;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: var(--t-base);
+      line-height: 1.618;  /* φ line-height */
+      color: var(--ink);
       background: var(--bg);
-      max-width: 900px;
+    }
+
+    /* ─── Layout: φ-based grid ─── */
+    .container {
+      max-width: var(--max-width);
       margin: 0 auto;
-      padding: 2rem;
+      padding: 0 var(--gutter);
     }
-    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--primary); }
-    .tagline { font-size: 1.25rem; color: #6b7280; margin-bottom: 2rem; }
-    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
-    ul { margin: 1rem 0; padding-left: 2rem; }
-    li { margin: 0.5rem 0; }
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
+    /* ─── Hero: Fibonacci spiral composition ─── */
+    .hero {
+      position: relative;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--f-13) var(--gutter) var(--f-8);
+      display: grid;
+      grid-template-columns: 1fr 1fr;  /* Rule of thirds: 2/3 content, balanced */
+      gap: var(--f-5);
+      align-items: center;
+    }
+
+    @media (max-width: 48rem) {
+      .hero-inner { grid-template-columns: 1fr; }
+    }
+
+    .hero-text h1 {
+      font-size: var(--t-2xl);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: var(--f-2);
+    }
+
+    .hero-text h1 .gradient {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text .tagline {
+      font-size: var(--t-md);
+      color: var(--ink-soft);
+      margin-bottom: var(--f-2);
+    }
+
+    .hero-text .quote {
+      font-size: var(--t-sm);
+      color: var(--muted);
+      font-style: italic;
+      border-left: 3px solid var(--gold);
+      padding-left: var(--f-2);
+    }
+
+    /* ─── Fibonacci SVG visualization ─── */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-visual svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* ─── Principles: φ-grid cards ─── */
+    .section {
+      padding: var(--f-13) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--f-8);
+    }
+
+    .section-header h2 {
+      font-size: var(--t-xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: var(--f-1);
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: var(--t-md);
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--f-3);
+    }
+
+    @media (max-width: 64rem) {
+      .principles { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 32rem) {
+      .principles { grid-template-columns: 1fr; }
+    }
+
+    .principle {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: var(--f-5);
+      border: 1px solid var(--line);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .principle:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 var(--f-2) var(--f-5) var(--accent-glow);
+    }
+
+    .principle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+
+    .principle .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.618rem;
+      height: 2.618rem;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: var(--t-md);
+      margin-bottom: var(--f-2);
+    }
+
+    .principle h3 {
+      font-size: var(--t-md);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--f-1);
+    }
+
+    .principle p {
+      font-size: var(--t-sm);
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    /* ─── Cards: golden section layout ─── */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1.618fr;  /* φ ratio: 1 : 1.618 */
+      gap: var(--f-3);
+      margin-bottom: var(--f-5);
+    }
+
+    @media (max-width: 48rem) {
+      .cards { grid-template-columns: 1fr; }
+    }
+
     .card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: var(--f-5);
+      border: 1px solid var(--line);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
     }
-    .card h3 { margin-bottom: 0.5rem; }
-    .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
-    .principle { background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); }
-    .principle h4 { color: var(--primary); margin-bottom: 0.5rem; }
-    code { background: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
-    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.9rem; }
+
+    .card:hover {
+      box-shadow: 0 var(--f-2) var(--f-5) var(--accent-glow);
+      border-color: var(--accent);
+    }
+
+    .card .icon {
+      float: right;
+      margin-left: var(--f-2);
+      opacity: 0.4;
+    }
+
+    .card h3 {
+      font-size: var(--t-md);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: var(--f-1);
+    }
+
+    .card p {
+      font-size: var(--t-sm);
+      color: var(--slate);
+    }
+
+    .card .arrow {
+      display: inline-block;
+      margin-top: var(--f-2);
+      font-size: var(--t-sm);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ─── CTA section ─── */
+    .cta {
+      background: linear-gradient(135deg, var(--accent) 0%, #1e3a8a 100%);
+      border-radius: var(--radius-lg);
+      padding: var(--f-8);
+      color: white;
+      margin: var(--f-8) 0;
+    }
+
+    .cta h2 {
+      font-size: var(--t-lg);
+      font-weight: 700;
+      margin-bottom: var(--f-3);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--f-3);
+    }
+
+    @media (max-width: 48rem) {
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+
+    .cta-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: var(--f-3);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .cta-item strong {
+      display: block;
+      font-size: var(--t-base);
+      margin-bottom: var(--f-1);
+    }
+
+    .cta-item p {
+      font-size: var(--t-sm);
+      opacity: 0.85;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: var(--f-8) 0;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ─── Phi watermark ─── */
+    .phi-mark {
+      position: fixed;
+      bottom: var(--f-2);
+      right: var(--f-2);
+      font-size: var(--t-xs);
+      color: var(--line);
+      font-family: monospace;
+      pointer-events: none;
+      user-select: none;
+    }
   </style>
 </head>
 <body>
-  <h1>open-gov-automation</h1>
-  <p class="tagline">Unix-Philosophie für öffentliche Verwaltungen</p>
-  <p><em>Weniger, aber wesentlicher. Transparent. Resilient.</em></p>
 
-  <h2>Die 4 Prinzipien</h2>
-  <div class="principles">
-    <div class="principle">
-      <h4>1. Einfachheit</h4>
-      <p>Do one thing well — modulare Fachverfahren</p>
-    </div>
-    <div class="principle">
-      <h4>2. Transparenz</h4>
-      <p>Text über Binär — API/JSON, Markdown, Git</p>
-    </div>
-    <div class="principle">
-      <h4>3. Resilienz</h4>
-      <p>Automatisierte Qualität — CI/CD, Tests, Health Checks</p>
-    </div>
-    <div class="principle">
-      <h4>4. Souveränität</h4>
-      <p>On-Premise First — Datenhoheit bei Kommune</p>
-    </div>
-  </div>
+  <!-- ═══ HERO: Fibonacci spiral composition ═══ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>open-gov-<span class="gradient">automation</span></h1>
+        <p class="tagline">Unix-Philosophie für öffentliche Verwaltungen</p>
+        <p class="quote">Weniger, aber wesentlicher. Transparent. Resilient. Souverän.</p>
+      </div>
+      <div class="hero-visual">
+        <!-- Fibonacci spiral SVG: φ-based golden spiral -->
+        <svg width="320" height="200" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" fill="none" role="img" aria-label="Fibonacci golden spiral">
+          <defs>
+            <linearGradient id="phiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#b45309" stop-opacity="0.6"/>
+            </linearGradient>
+            <linearGradient id="phiGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#fef3c7" stop-opacity="0.3"/>
+            </linearGradient>
+          </defs>
 
-  <h2>Dokumentation</h2>
-  <div class="card">
-    <h3><a href="../MANIFEST.md">MANIFEST.md</a></h3>
-    <p>Manifest für Open Government Automation — Was wir glauben, ablehnen, versprechen</p>
-  </div>
-  <div class="card">
-    <h3><a href="../ADMIN-VALUES.md">ADMIN-VALUES.md</a></h3>
-    <p>Unix-Prinzipien für Kommunen mit praktischer Checkliste</p>
-  </div>
-  <div class="card">
-    <h3><a href="../adr/0012-unix-philosophy-for-public-admin.md">ADR 0012</a></h3>
-    <p>Architektur-Entscheidung: Unix-Philosophie für Verwaltungssysteme</p>
-  </div>
-  <div class="card">
-    <h3><a href="../examples/">examples/</a></h3>
-    <p>CI-Pipelines und modulare Strukturen — Fördermittel-Management als Referenz für Open Gov Automation</p>
-  </div>
+          <!-- Golden rectangles: Fibonacci sequence 1,1,2,3,5,8,13,21 -->
+          <!-- Box 1: 55×55 -->
+          <rect x="0" y="0" width="55" height="55" fill="url(#phiGrad2)" stroke="#e2e8f0" stroke-width="0.5"/>
+          <!-- Box 2: 55×55 -->
+          <rect x="55" y="0" width="55" height="55" fill="url(#phiGrad2)" stroke="#e2e8f0" stroke-width="0.5"/>
+          <!-- Box 3: 55×89 (55+34) -->
+          <rect x="110" y="0" width="89" height="55" fill="url(#phiGrad2)" stroke="#e2e8f0" stroke-width="0.5"/>
+          <!-- Box 4: 144×55 -->
+          <rect x="110" y="55" width="144" height="89" fill="url(#phiGrad2)" stroke="#e2e8f0" stroke-width="0.5"/>
+          <!-- Box 5: 144×144 -->
+          <rect x="0" y="55" width="144" height="144" fill="url(#phiGrad2)" stroke="#e2e8f0" stroke-width="0.5"/>
 
-  <h2>Call to Action</h2>
-  <div class="card">
-    <h3>Für Kommunen und Verwaltungen</h3>
-    <ul>
-      <li><strong>Frag nach Open Source</strong> — Bevor du proprietäre Software kaufst</li>
-      <li><strong>Frag nach API</strong> — Bevor du manuelle Prozesse akzeptierst</li>
-      <li><strong>Frag nach On-Premise</strong> — Bevor du Cloud-Lösungen unterschreibst</li>
-      <li><strong>Frag nach Tests</strong> — Bevor du "es funktioniert" glaubst</li>
-    </ul>
-  </div>
+          <!-- Golden spiral arcs -->
+          <path d="M 0 55 A 55 55 0 0 1 55 0" stroke="url(#phiGrad)" stroke-width="2" fill="none"/>
+          <path d="M 55 0 A 55 55 0 0 1 110 55" stroke="url(#phiGrad)" stroke-width="2" fill="none"/>
+          <path d="M 110 55 A 89 89 0 0 0 199 144" stroke="url(#phiGrad)" stroke-width="2" fill="none"/>
+          <path d="M 199 144 A 144 144 0 0 1 55 199" stroke="url(#phiGrad)" stroke-width="2" fill="none"/>
+          <path d="M 55 199 A 144 144 0 0 1 199 55" stroke="url(#phiGrad)" stroke-width="2" fill="none"/>
 
+          <!-- Labels: Fibonacci numbers -->
+          <text x="27" y="30" text-anchor="middle" fill="#64748b" font-size="9" font-family="monospace">1</text>
+          <text x="82" y="30" text-anchor="middle" fill="#64748b" font-size="9" font-family="monospace">1</text>
+          <text x="154" y="30" text-anchor="middle" fill="#64748b" font-size="9" font-family="monospace">2</text>
+          <text x="182" y="100" text-anchor="middle" fill="#64748b" font-size="10" font-family="monospace">3</text>
+          <text x="72" y="130" text-anchor="middle" fill="#64748b" font-size="11" font-family="monospace">5</text>
+          <text x="72" y="180" text-anchor="middle" fill="#1d4ed8" font-size="12" font-weight="bold" font-family="monospace">φ</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ PRINCIPLES: 4 cards in φ-grid ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Die 4 Prinzipien</h2>
+        <p>Mathematisch fundiert. Praktisch angewendet.</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <span class="num">1</span>
+          <h3>Einfachheit</h3>
+          <p>Do one thing well — modulare Fachverfahren</p>
+        </div>
+        <div class="principle">
+          <span class="num">2</span>
+          <h3>Transparenz</h3>
+          <p>Text über Binär — API/JSON, Markdown, Git</p>
+        </div>
+        <div class="principle">
+          <span class="num">3</span>
+          <h3>Resilienz</h3>
+          <p>Automatisierte Qualität — CI/CD, Tests, Health Checks</p>
+        </div>
+        <div class="principle">
+          <span class="num">4</span>
+          <h3>Souveränität</h3>
+          <p>On-Premise First — Datenhoheit bei Kommune</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DOCUMENTATION: golden section cards ═══ -->
+  <section class="section" style="background: var(--surface);">
+    <div class="container">
+      <div class="section-header">
+        <h2>Dokumentation</h2>
+        <p>Strukturiert nach Architektur-Entscheidungen</p>
+      </div>
+
+      <div class="cards">
+        <a class="card" href="../MANIFEST.md">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4h16v16H4z M4 8h16 M8 4v16" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h3>MANIFEST.md</h3>
+          <p>Manifest für Open Government Automation — Was wir glauben, ablehnen, versprechen</p>
+          <span class="arrow">→ Manifest lesen</span>
+        </a>
+        <a class="card" href="../ADMIN-VALUES.md">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L3 7v10l9 5 9-5V7z M12 2v20 M3 7l9 5 9-5" stroke="#b45309" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>ADMIN-VALUES.md</h3>
+          <p>Unix-Prinzipien für Kommunen mit praktischer Checkliste für jede Einführung</p>
+          <span class="arrow">→ Prinzipien lesen</span>
+        </a>
+      </div>
+
+      <div class="cards">
+        <a class="card" href="../adr/0012-unix-philosophy-for-public-admin.md">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 3h14v18l-7-4-7 4z" stroke="#15803d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>ADR 0012</h3>
+          <p>Architektur-Entscheidung: Unix-Philosophie für Verwaltungssysteme</p>
+          <span class="arrow">→ ADR lesen</span>
+        </a>
+        <a class="card" href="../examples/">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16 M4 12h16 M4 18h10" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="18" cy="18" r="3" stroke="#475569" stroke-width="1.5"/>
+          </svg>
+          <h3>examples/</h3>
+          <p>CI-Pipelines und modulare Strukturen — Fördermittel-Management als Referenz</p>
+          <span class="arrow">→ Beispiele ansehen</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA: gradient panel with 4 actions ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>Call to Action — Für Kommunen und Verwaltungen</h2>
+        <div class="cta-grid">
+          <div class="cta-item">
+            <strong>Open Source</strong>
+            <p>Frag nach Open Source — bevor du proprietäre Software kaufst</p>
+          </div>
+          <div class="cta-item">
+            <strong>API</strong>
+            <p>Frag nach API — bevor du manuelle Prozesse akzeptierst</p>
+          </div>
+          <div class="cta-item">
+            <strong>On-Premise</strong>
+            <p>Frag nach On-Premise — bevor du Cloud-Lösungen unterschreibst</p>
+          </div>
+          <div class="cta-item">
+            <strong>Tests</strong>
+            <p>Frag nach Tests — bevor du "es funktioniert" glaubst</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
   <footer>
-    <p>Open Gov Automation ist möglich. Wir bauen sie.</p>
-    <p><a href="https://github.com/tobias-weiss-ai-xr/open-gov-automation">GitHub Repository</a></p>
+    <div class="container">
+      <p style="margin-bottom: 0.618rem;">Open Gov Automation ist möglich. Wir bauen sie.</p>
+      <p><a href="https://github.com/tobias-weiss-ai-xr/open-gov-automation">GitHub Repository →</a></p>
+      <p style="margin-top: 1.618rem; font-size: var(--t-xs); color: var(--line);">φ = 1.618 · Fibonacci · Golden Ratio</p>
+    </div>
   </footer>
+
+  <div class="phi-mark">φ</div>
+
 </body>
 </html>
