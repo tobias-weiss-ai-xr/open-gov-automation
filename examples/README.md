@@ -7,7 +7,7 @@
 | Dokument | Zweck | Prinzip |
 |----------|-------|---------|
 | [admin-fördermittel-ci.yml](admin-fördermittel-ci.yml) | CI-Pipeline für Fördermittel-Verwaltung | Automatisierte Qualität |
-| [foerdermittel-module.md](foerdermittel-module.md) | Modulare Struktur eines Fachverfahrens | Do one thing well |
+| [60k-mesh-cluster-projekt.md](60k-mesh-cluster-projekt.md) | 60k-Projekt-Skizze: 3× Mesh-Cluster für kleine Kommune | Referenz-Implementierung |
 
 ### Übergeordnete Dokumente
 

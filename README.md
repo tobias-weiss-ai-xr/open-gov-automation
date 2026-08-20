@@ -19,6 +19,8 @@ Anwendung der minimalen stoischer Unix-Prinzipien auf öffentliche Verwaltungen:
 | [ADMIN-VALUES.md](ADMIN-VALUES.md) | Unix-Prinzipien für Kommunen mit Checkliste |
 | [adr/0012-*.md](adr/0012-unix-philosophy-for-public-admin.md) | Architektur-Entscheidung |
 | [examples/](examples/) | CI-Pipelines und modulare Strukturen |
+| [compliance/](compliance/) | DSGVO-Vorlagen: VVT, TOMs, DSFA |
+| [examples/60k-mesh-cluster-projekt.md](examples/60k-mesh-cluster-projekt.md) | 60k-Projekt-Skizze (3× Mesh-Cluster) |
 
 ## GitHub Pages
 
