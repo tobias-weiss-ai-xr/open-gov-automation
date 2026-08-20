@@ -26,17 +26,21 @@ und ohne Vendor Lock-in:
 
 ---
 
-## Hardware: 3× Mesh-Knoten
+## Hardware: 3× ASUS Ascent GX10 (GB10)
 
 | Position | Spezifikation | Stückpreis | Summe |
 |----------|---------------|-----------|-------|
-| Knoten A (Primary) | Mini-PC (8C/16GB/512GB NVMe) + WireGuard | 850 € | 850 € |
-| Knoten B (Replica) | Mini-PC (8C/16GB/512GB NVMe) | 850 € | 850 € |
-| Knoten C (Edge/LB) | Mini-PC (4C/8GB/256GB) + Reverse Proxy | 650 € | 650 € |
-| Netzwerk | Managed Switch + USV (1500VA) | 1.200 € | 1.200 € |
-| NAS (Backup) | 2-Bay, 2×4TB RAID1 | 600 € | 600 € |
-| Montage/Schrank | 19" Wandgehäuse, Kabel | 450 € | 450 € |
-| **Hardware gesamt** | | | **4.600 €** |
+| Knoten A | ASUS Ascent GX10 — Nvidia GB10 Blackwell Superchip, 128GB, 1TB SSD, DOS | 3.999 € | 3.999 € |
+| Knoten B | ASUS Ascent GX10 — Nvidia GB10 Blackwell Superchip, 128GB, 1TB SSD, DOS | 3.999 € | 3.999 € |
+| Knoten C | ASUS Ascent GX10 — Nvidia GB10 Blackwell Superchip, 128GB, 1TB SSD, DOS | 3.999 € | 3.999 € |
+| Interconnect | 200 Gb/s Kabel (Knoten-verbund) | 150 € | 450 € |
+| NAS (Backup) | 2-Bay, 2×4TB RAID1, verschlüsselt | 600 € | 600 € |
+| USV + Schrank | 19" Wandgehäuse, USV 1500VA, Montage | 450 € | 450 € |
+| **Hardware gesamt** | | | **13.497 €** |
+
+> **AI-Souveränität:** Jeder Knoten hat 128 GB einheitlichen Speicher →
+> lokale LLM-Inferenz (Fördermittel-Scoring, Dokumenten-Extraktion) ohne Cloud.
+> Kein Datentransfer zu US-Anbietern. DSGVO-by-Design.
 
 ---
 
@@ -44,12 +48,12 @@ und ohne Vendor Lock-in:
 
 | Posten | Beschreibung | Kosten |
 |--------|-------------|--------|
-| Hardware (s.o.) | 3× Knoten + Infra | 4.600 € |
-| Setup & Integration | Cluster-Aufbau, CI/CD, Monitoring | 18.000 € |
-| Modul-Implementierung | Fördermittel + Bauanträge + Bürgerportal | 22.000 € |
-| Schulung & Handbuch | 2 Tage Admin + Bürger-Support-Doku | 6.000 € |
-| Compliance | VVT, TOMs, DSFA (siehe `/compliance`) | 4.000 € |
-| Wartung Jahr 1 | Hotline, Updates, 2x Vor-Ort | 5.400 € |
+| Hardware (s.o.) | 3× GX10 + 200Gb/s-Kabel + Infra | 13.497 € |
+| Setup & Integration | Cluster-Aufbau, Mesh-Netz, CI/CD, Monitoring | 14.000 € |
+| Modul-Implementierung | Fördermittel + Bauanträge + Bürgerportal | 18.000 € |
+| Schulung & Handbuch | 2 Tage Admin + Bürger-Support-Doku | 5.000 € |
+| Compliance | VVT, TOMs, DSFA (siehe `/compliance`) | 3.500 € |
+| Wartung Jahr 1 | Hotline, Updates, 2× Vor-Ort | 6.003 € |
 | **Gesamt** | | **60.000 €** |
 
 ---
@@ -57,17 +61,21 @@ und ohne Vendor Lock-in:
 ## 3× Mesh-Topologie (Detail)
 
 ```
-Knoten A (10.0.0.1)  ←→  Knoten B (10.0.0.2)
-        ↕                      ↕
-Knoten C (10.0.0.3)  ←→  Load Balancer (10.0.0.254)
+Knoten A (GX10) ──200Gb/s── Knoten B (GX10)
+     ↕                        ↕
+Knoten C (GX10) ──200Gb/s── Load Balancer (10.0.0.254)
 
-WireGuard-Peers (je Knoten 2 Tunnel):
-  A↔B, B↔C, C↔A  → vollvermascht, kein SPOF
+Alle Knoten identisch (GB10, 128GB) → vollvermascht, kein SPOF.
+Interconnect: 200 Gb/s Direktverbindung (Cable, 150 €/Stk).
+Control-Plane: WireGuard-Mesh für verschlüsselte Orchestrierung.
 ```
 
 **Failover:** Bei Knoten-Ausfall übernimmt B innerhalb < 30s.
 Daten liegen repliziert auf A+B (Postgres Streaming Replication).
-Knoten C = Reverse Proxy + Cache (entlastet A/B).
+Jeder Knoten kann alle 3 Module allein betreiben (Capacity Headroom: ~384 GB gesamt).
+
+**AI-Last:** Fördermittel-Scoring läuft lokal auf einem Knoten (GB10,
+kein Cloud). 200Gb/s-Link entlastet Replikation/Daten-Shift zwischen Knoten.
 
 ---
 
