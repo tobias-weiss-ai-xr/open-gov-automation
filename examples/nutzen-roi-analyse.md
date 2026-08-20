@@ -3,6 +3,10 @@
 > Fokus: 60k-Pilot für ~10.000 EW Gemeinde (Mitte der Zielgröße 5–20k)
 > Methode: Illustrative Schätzung, **vor Vertrieb zu verifizieren** (0 Kunden, 0 Messwerte)
 > Prämisse: Reine Kostenersparnis reicht nicht — Business-Case = Portfolio-Skalierung
+>
+> **Hinweis:** Fördermittel ist für das quantitative Beispiel **ausgeschlossen** (per Instruction).
+> Rigorose Prüfung erfolgt stattdessen via **Bayesian Monte Carlo** am Modul **Bauanträge**
+> → `bauantraege-monte-carlo-ergebnis.md` (P(NPV>0) ≈ 94 %, Payback ~2,7 J, Gießen-Skala).
 
 ---
 
@@ -28,6 +32,9 @@ Der Pitch an Kommunen ("wir finden Fördergelder, die Sie verpassen") ist Varian
 - ~20–100 Anträge/Jahr, 2–4h Bearbeitung = 100–600h/Jahr
 - Automatisierung spart ~30% = **30–180h/Jahr ≈ 1k–6k €/Jahr**
 - Payback: **> 10 Jahre** → rechnet sich nicht allein.
+
+> **Quantitative Prüfung am Modul Bauanträge (Gießen-Skala) siehe Monte-Carlo-Ergebnis:**
+> dort P(NPV>0) ≈ 94 %, Payback ~2,7 J — rechnet sich bei Mittelstadt, nicht bei Kleinstadt.
 
 ---
 
