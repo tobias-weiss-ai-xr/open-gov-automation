@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verwaltung 2.0 — Unix-Philosophie für Kommunen</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1f2937;
+      --bg: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--primary); }
+    .tagline { font-size: 1.25rem; color: #6b7280; margin-bottom: 2rem; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+    ul { margin: 1rem 0; padding-left: 2rem; }
+    li { margin: 0.5rem 0; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .card h3 { margin-bottom: 0.5rem; }
+    .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .principle { background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid var(--primary); }
+    .principle h4 { color: var(--primary); margin-bottom: 0.5rem; }
+    code { background: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+    footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>Verwaltung 2.0</h1>
+  <p class="tagline">Unix-Philosophie für öffentliche Verwaltungen</p>
+  <p><em>Weniger, aber wesentlicher. Transparent. Resilient.</em></p>
+
+  <h2>Die 4 Prinzipien</h2>
+  <div class="principles">
+    <div class="principle">
+      <h4>1. Einfachheit</h4>
+      <p>Do one thing well — modulare Fachverfahren</p>
+    </div>
+    <div class="principle">
+      <h4>2. Transparenz</h4>
+      <p>Text über Binär — API/JSON, Markdown, Git</p>
+    </div>
+    <div class="principle">
+      <h4>3. Resilienz</h4>
+      <p>Automatisierte Qualität — CI/CD, Tests, Health Checks</p>
+    </div>
+    <div class="principle">
+      <h4>4. Souveränität</h4>
+      <p>On-Premise First — Datenhoheit bei Kommune</p>
+    </div>
+  </div>
+
+  <h2>Dokumentation</h2>
+  <div class="card">
+    <h3><a href="../MANIFEST.md">MANIFEST.md</a></h3>
+    <p>Manifest für digitale Verwaltung — Was wir glauben, ablehnen, versprechen</p>
+  </div>
+  <div class="card">
+    <h3><a href="../ADMIN-VALUES.md">ADMIN-VALUES.md</a></h3>
+    <p>Unix-Prinzipien für Kommunen mit praktischer Checkliste</p>
+  </div>
+  <div class="card">
+    <h3><a href="../adr/0012-unix-philosophy-for-public-admin.md">ADR 0012</a></h3>
+    <p>Architektur-Entscheidung: Unix-Philosophie für Verwaltungssysteme</p>
+  </div>
+  <div class="card">
+    <h3><a href="../examples/">examples/</a></h3>
+    <p>CI-Pipelines und modulare Strukturen — Fördermittel-Management als Referenz</p>
+  </div>
+
+  <h2>Call to Action</h2>
+  <div class="card">
+    <h3>Für Kommunen und Verwaltungen</h3>
+    <ul>
+      <li><strong>Frag nach Open Source</strong> — Bevor du proprietäre Software kaufst</li>
+      <li><strong>Frag nach API</strong> — Bevor du manuelle Prozesse akzeptierst</li>
+      <li><strong>Frag nach On-Premise</strong> — Bevor du Cloud-Lösungen unterschreibst</li>
+      <li><strong>Frag nach Tests</strong> — Bevor du "es funktioniert" glaubst</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Verwaltung 2.0 ist möglich. Wir bauen sie.</p>
+    <p><a href="https://github.com/tobias-weiss-ai-xr/verwaltung-2.0">GitHub Repository</a></p>
+  </footer>
+</body>
+</html>
