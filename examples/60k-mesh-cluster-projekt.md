@@ -38,7 +38,7 @@ Cloud: Die zwei Geräte sind die gesamte Infrastruktur.
 
 **Lokale Einheit ohne Abhängigkeiten:** Keine USV, kein NAS, keine externe Datenbank
 oder Cloud. Die zwei Geräte sind über die 200Gb/s-Verbindung **gekoppelt** und bilden
-eine logische Einheit mit **256 GB einheitlichem Speicher** – genug, um ein hinreichend
+eine logische Einheit mit **~240 GB nutzbarem Speicher** (256 GB theoretisch) – genug, um ein hinreichend
 *intelligentes* Modell lokal zu betreiben, ohne US-Cloud. DSGVO-konform von Grund auf.
 
 > **PoC bestätigt:** Zwei gekoppelte GB10-Geräte (DGX Spark) betreiben produktionserprobt
@@ -60,6 +60,10 @@ ein fronthauben-taugliches Modell lokal – ohne Cloud. Details: `examples/poc-d
 *Expertise + Befähigung*. Die Kommune betreibt danach selbst — souverän, ohne laufende
 Abhängigkeit. (Optionale Folge-Betreuung separat vereinbar.)
 
+> **Expertise (45.000 €) transparent:** ca. 30 Beratungstage à 1.500 € für Architektur,
+> Cluster-Einrichtung, CI/CD, Modul-Konfiguration, Bereitstellung und GovOps-Begleitung.
+> Jeder Euro ist diesem Tagessatz zugeordnet — keine undurchsichtigen Pauschalen.
+
 ---
 
 ## Aufbau (2 Geräte)
@@ -71,12 +75,12 @@ Gerät A (GX10, Primary) ══200Gb/s══ Gerät B (GX10, Replica)
 ```
 
 Die zwei Geräte sind über die 200Gb/s-Verbindung **gekoppelt**: Sie bilden eine logische
-Einheit mit 256 GB einheitlichem Speicher, auf der ein hinreichend *intelligentes* Modell
+Einheit mit ~240 GB nutzbarem Speicher (256 GB theoretisch), auf der ein hinreichend *intelligentes* Modell
 lokal läuft — ohne US-Cloud. Gleichzeitig dient B als ständige Kopie (Datenabgleich über
 die Verbindung, **kein NAS nötig**): Fällt A aus, übernimmt B in unter 30 Sekunden.
 Die zwei Geräte sind die gesamte Infrastruktur — keine externe Abhängigkeit.
 
-**KI-Arbeit:** Das gekoppelte Modell (256 GB, keine Cloud) wertet Bauanträge aus und
+**KI-Arbeit:** Das gekoppelte Modell (~240 GB nutzbar, keine Cloud) wertet Bauanträge aus und
 erkennt Muster vorausschauend. Die schnelle Verbindung hält die Geräte als eine Einheit.
 
 ---
