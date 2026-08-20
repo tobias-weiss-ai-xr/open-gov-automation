@@ -27,7 +27,7 @@ Wir setzen auf **lokale, souveräne KI, die vorausschauend denkt**:
 
 ## Konkreter Pilot (60.000 €, 6 Monate)
 
-Ein vollständiges Beispiel-Projekt: **2 gekoppelte Geräte (ASUS GX10) als lokale KI-Einheit** (256 GB einheitlicher Speicher), das Modul **Bauanträge** als Anwendungsfall, unsere Expertise zur Einrichtung und die Schulung Ihres Ansprechpartners. (Die gekoppelte Hardware ist als PoC bereits produktionserprobt — siehe Material.)
+Ein vollständiges Beispiel-Projekt: **2 gekoppelte Geräte (ASUS GX10) als lokale KI-Einheit** (~240 GB nutzbar, 256 GB theoretisch), das Modul **Bauanträge** als Anwendungsfall, unsere Expertise zur Einrichtung und die Schulung Ihres Ansprechpartners. (Die gekoppelte Hardware ist als PoC bereits produktionserprobt — siehe Material.)
 
 → Details in der [60k-Projekt-Skizze](examples/60k-mesh-cluster-projekt.md)
 

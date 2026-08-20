@@ -7,6 +7,8 @@
 > **Hinweis:** Fördermittel ist für das quantitative Beispiel **ausgeschlossen** (per Instruction).
 > Rigorose Prüfung erfolgt stattdessen via **Bayesian Monte Carlo** am Modul **Bauanträge**
 > → `bauantraege-monte-carlo-ergebnis.md` (P(NPV>0) ≈ 94 %, Payback ~2,7 J, Gießen-Skala).
+> **Bauanträge ist damit das quantitative Lead-Beispiel**; Fördermittel bleibt Modul,
+> wird hier nur als Kontext geführt (siehe die A/B-Inkonsistenz in Abschnitt 1).
 
 ---
 

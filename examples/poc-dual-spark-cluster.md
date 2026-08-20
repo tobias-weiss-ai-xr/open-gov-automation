@@ -4,6 +4,13 @@
 > https://graphwiz.ai/content/ai/sovereign-ai-dual-spark-cluster/
 > Dieser PoC bestätigt unsere **2×-GX10-Kopplung** als realisierbar und produktionserprobt.
 
+**Begriffe einfach erklärt:**
+- **GB10:** Der „Superchip“ in beiden Geräten – vereint Rechner- und Grafik-Einheit mit gemeinsamem Speicher.
+- **MoE (Mixture-of-Experts):** Ein Modell, das pro Aufgabe nur die passenden „Fach-Experten“ aktiviert – effizienter als ein starres Modell.
+- **FP8:** Ein platzsparendes Rechenformat; das Modell passt so in den lokalen Speicher.
+- **Gebondet (bond):** Zwei Kabel werden gebündelt → doppelte Übertragungsrate (400 Gbps).
+- **DeepSeek-V4-Flash:** Ein offengelegtes (open-weight) Sprachmodell der GPT-4-Klasse.
+
 ---
 
 ## Was der PoC zeigt

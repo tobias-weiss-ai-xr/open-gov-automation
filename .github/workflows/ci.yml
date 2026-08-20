@@ -1,0 +1,14 @@
+name: CI — Docs & Examples Quality
+
+on: [push, pull_request]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Repository-Konsistenzprüfung
+        run: python3 scripts/check_repo.py
