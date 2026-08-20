@@ -1,4 +1,4 @@
-# Verwaltung 2.0 — Unix-Philosophie für Öffentliche Verwaltungen
+# open-gov-automation — Unix-Philosophie für Öffentliche Verwaltungen
 
 > "Weniger, aber wesentlicher. Transparent. Resilient."
 
@@ -15,16 +15,20 @@ Anwendung der minimalen stoischer Unix-Prinzipien auf öffentliche Verwaltungen:
 
 | Dokument | Beschreibung |
 |----------|--------------|
-| [MANIFEST.md](MANIFEST.md) | Manifest für digitale Verwaltung |
+| [MANIFEST.md](MANIFEST.md) | Manifest für Open Government Automation |
 | [ADMIN-VALUES.md](ADMIN-VALUES.md) | Unix-Prinzipien für Kommunen mit Checkliste |
 | [adr/0012-*.md](adr/0012-unix-philosophy-for-public-admin.md) | Architektur-Entscheidung |
 | [examples/](examples/) | CI-Pipelines und modulare Strukturen |
 
-## gh-pages
+## GitHub Pages
 
 Diese Dokumentation ist verfügbar unter:
-https://tobias-weiss-ai-xr.github.io/verwaltung-2.0/
+https://tobias-weiss-ai-xr.github.io/open-gov-automation/
 
 ## Lizenz
 
 GPL-3.0 — Open Source für öffentliche Software
+
+## Repository
+
+https://github.com/tobias-weiss-ai-xr/open-gov-automation
