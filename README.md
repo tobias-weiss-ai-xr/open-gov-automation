@@ -27,7 +27,7 @@ Wir setzen auf **lokale, souveräne KI, die vorausschauend denkt**:
 
 ## Konkreter Pilot (60.000 €, 6 Monate)
 
-Ein vollständiges Beispiel-Projekt: **2 gekoppelte Geräte (ASUS GX10) als lokale KI-Einheit** (256 GB einheitlicher Speicher), das Modul **Bauanträge** als Anwendungsfall, unsere Expertise zur Einrichtung und die Schulung Ihres Ansprechpartners.
+Ein vollständiges Beispiel-Projekt: **2 gekoppelte Geräte (ASUS GX10) als lokale KI-Einheit** (256 GB einheitlicher Speicher), das Modul **Bauanträge** als Anwendungsfall, unsere Expertise zur Einrichtung und die Schulung Ihres Ansprechpartners. (Die gekoppelte Hardware ist als PoC bereits produktionserprobt — siehe Material.)
 
 → Details in der [60k-Projekt-Skizze](examples/60k-mesh-cluster-projekt.md)
 
@@ -77,6 +77,7 @@ Fokusregion: [Mittelhessen-Shortlist](examples/mittelhessen-pilot-kandidaten.md)
 ## Material (Vertiefung)
 
 - [60k-Projekt-Skizze](examples/60k-mesh-cluster-projekt.md) – Pilot im Detail (Bauanträge, Baurecht, GovOps)
+- [PoC: Dual-Spark-Cluster](examples/poc-dual-spark-cluster.md) – Machbarkeitsnachweis der 2×-GX10-Kopplung (extern bestätigt)
 - [Monte-Carlo-Analyse](examples/bauantraege-monte-carlo-ergebnis.md) – Wirtschaftlichkeitsnachweis
 - [Compliance-Vorlagen](compliance/) – VVT, TOMs, DSFA (DSGVO)
 - [Mittelhessen-Kandidaten](examples/mittelhessen-pilot-kandidaten.md) – Wo wir anklopfen

@@ -33,13 +33,17 @@ Cloud: Die zwei Geräte sind die gesamte Infrastruktur.
 |----------|---------------|-----------|-------|
 | Gerät A (Primary) | ASUS Ascent GX10 — Nvidia GB10, 128 GB, 1 TB SSD | 3.999 € | 3.999 € |
 | Gerät B (Replica) | ASUS Ascent GX10 — Nvidia GB10, 128 GB, 1 TB SSD | 3.999 € | 3.999 € |
-| Verbindung | 2× 200 Gb/s Direktverbindung (A↔B) | 150 € | 300 € |
+| Verbindung | 2× 200 Gb/s Direktlink, gebondet (400 Gbps) | 150 € | 300 € |
 | **Hardware gesamt** | | | **8.298 €** |
 
 **Lokale Einheit ohne Abhängigkeiten:** Keine USV, kein NAS, keine externe Datenbank
 oder Cloud. Die zwei Geräte sind über die 200Gb/s-Verbindung **gekoppelt** und bilden
 eine logische Einheit mit **256 GB einheitlichem Speicher** – genug, um ein hinreichend
 *intelligentes* Modell lokal zu betreiben, ohne US-Cloud. DSGVO-konform von Grund auf.
+
+> **PoC bestätigt:** Zwei gekoppelte GB10-Geräte (DGX Spark) betreiben produktionserprobt
+ein fronthauben-taugliches Modell lokal – ohne Cloud. Details: `examples/poc-dual-spark-cluster.md`
+> (Quelle: graphwiz.ai, 2026).
 
 ---
 
