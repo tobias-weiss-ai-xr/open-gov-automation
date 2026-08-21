@@ -87,7 +87,6 @@ Verwaltungen arbeiten heute meist *reaktiv*:
 - [Wirtschaftlichkeit](examples/wirtschaftlichkeit.md) – ROI-Berechnung für verschiedene Szenarien
 - [Lösungsvergleich](examples/loesungsvergleich.md) – open-gov-automation vs. Cloud/SaaS
 - [Compliance](compliance/) – TOMs, VVT, DSFA (DSGVO-konform)
-- [Pilot-Kandidaten](examples/mittelhessen-pilot-kandidaten.md) – Fokusregion Mittelhessen
 - [Design Guide](DESIGN-GUIDE.md) – Visuelle Prinzipien
 
 ---
