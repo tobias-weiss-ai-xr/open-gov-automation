@@ -4,315 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>open-gov-automation | Souveräne KI für Kommunen</title>
-    <meta name="description" content="Lokale, souveräne KI für die öffentliche Verwaltung. Ohne Cloud-Zwang. DSGVO-konform. Open Source.">
+    <meta name="description" content="Lokale, souveräne KI für die öffentliche Verwaltung. Vorausschauend statt reaktiv. Ohne Cloud-Zwang. DSGVO-konform. Open Source.">
     <style>
-        /* DESIGN-GUIDE.md Implementation */
+        /* DESIGN-GUIDE.md Implementation — Minimal. Stoisch. Unix-Philosophie. */
         :root {
-            /* Colors */
             --color-primary: #2563eb;
             --color-dark: #1e40af;
             --color-light: #dbeafe;
             --color-success: #10b981;
-            --color-warning: #f59e0b;
-            --color-error: #ef4444;
             --color-neutral: #6b7280;
             --color-dark-gray: #374151;
             --color-black: #111827;
             --color-white: #ffffff;
             --color-bg: #ffffff;
+            --color-bg-soft: #f8fafc;
             --color-border: #e5e7eb;
-            
-            /* Typography */
             --font-primary: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            --font-mono: "JetBrains Mono", "Fira Code", monospace;
-            
-            /* Spacing (4px grid) */
             --space-xs: 8px;
             --space-sm: 16px;
             --space-md: 24px;
             --space-lg: 32px;
-            --space-xl: 48px;
-            
-            /* Layout */
-            --max-width: 800px;
-            --margin-mobile: 24px;
-            --margin-desktop: 48px;
+            --space-xl: 64px;
+            --max-width: 880px;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: var(--font-primary);
-            background: var(--color-white);
+            background: var(--color-bg);
             color: var(--color-dark-gray);
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 var(--margin-mobile);
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                padding: 0 var(--margin-desktop);
-            }
-        }
-        
+
+        a { color: var(--color-primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
         /* Header */
-        header {
-            padding: var(--space-lg) 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            font-weight: 700;
-            color: var(--color-black);
-        }
-        
-        .logo-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--color-primary);
-            position: relative;
-        }
-        
-        .logo-icon::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-bottom: 24px solid var(--color-white);
-        }
-        
-        nav a {
-            margin-left: var(--space-lg);
-            font-weight: 500;
-            color: var(--color-dark-gray);
-        }
-        
-        nav a:hover {
-            color: var(--color-primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: var(--space-xl) 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--color-black);
-            margin-bottom: var(--space-sm);
-        }
-        
-        @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-        }
-        
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--color-neutral);
-            max-width: 600px;
-            margin: 0 auto var(--space-lg);
-        }
-        
-        .hero-image {
-            margin: var(--space-lg) auto;
-            max-width: 100%;
-            height: auto;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: var(--space-sm) var(--space-lg);
-            background: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        
-        .btn:hover {
-            background: var(--color-dark);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--color-light);
-        }
-        
-        .hero-actions {
-            display: flex;
-            gap: var(--space-sm);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Value Props */
-        .value-props {
-            padding: var(--space-xl) 0;
-        }
-        
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-lg);
-        }
-        
-        .value-card {
-            padding: var(--space-lg);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-        }
-        
-        .value-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--color-black);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .value-card p {
-            color: var(--color-neutral);
-        }
-        
-        /* Comparison Table */
-        .comparison {
-            padding: var(--space-xl) 0;
-        }
-        
-        .comparison h2 {
-            text-align: center;
-            margin-bottom: var(--space-lg);
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: var(--space-lg) 0;
-        }
-        
-        .comparison-table th,
-        .comparison-table td {
-            padding: var(--space-md);
-            text-align: left;
-            border-bottom: 1px solid var(--color-border);
-        }
-        
-        .comparison-table th {
-            background: var(--color-bg);
-            font-weight: 600;
-        }
-        
-        .comparison-table tr:nth-child(even) {
-            background: var(--color-bg);
-        }
-        
-        .check {
-            color: var(--color-success);
-            font-weight: bold;
-        }
-        
-        .cross {
-            color: var(--color-error);
-            font-weight: bold;
-        }
-        
-        .warning {
-            color: var(--color-warning);
-        }
-        
+        header { padding: var(--space-md) 0; border-bottom: 1px solid var(--color-border); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--color-black); font-size: 1.05rem; }
+        .logo-mark { width: 22px; height: 22px; background: var(--color-primary); border-radius: 3px; }
+        nav a { margin-left: var(--space-md); font-weight: 500; color: var(--color-dark-gray); font-size: 0.95rem; }
+        nav a:hover { color: var(--color-primary); }
+
+        /* Hero */
+        .hero { padding: var(--space-xl) 0 var(--space-lg); text-align: center; }
+        .eyebrow { color: var(--color-primary); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.8rem; margin-bottom: var(--space-sm); }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--color-black); line-height: 1.15; margin-bottom: var(--space-md); }
+        .hero p.lead { font-size: 1.15rem; color: var(--color-neutral); max-width: 640px; margin: 0 auto var(--space-md); }
+        .trust-bar { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-lg); }
+        .trust-bar span { font-size: 0.85rem; color: var(--color-dark-gray); background: var(--color-bg-soft); border: 1px solid var(--color-border); padding: 6px 14px; border-radius: 999px; }
+        .hero-actions { display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-lg); }
+        .btn { display: inline-block; padding: 12px 28px; background: var(--color-primary); color: var(--color-white); border-radius: 4px; font-weight: 600; }
+        .btn:hover { background: var(--color-dark); text-decoration: none; }
+        .btn-secondary { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .btn-secondary:hover { background: var(--color-light); }
+        .hero-image { max-width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: 8px; }
+
+        /* Sections */
+        section { padding: var(--space-xl) 0; border-top: 1px solid var(--color-border); }
+        .section-title { text-align: center; font-size: 1.6rem; font-weight: 700; color: var(--color-black); margin-bottom: var(--space-md); }
+        .section-intro { text-align: center; color: var(--color-neutral); max-width: 620px; margin: 0 auto var(--space-lg); }
+
+        /* Value grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); }
+        .card { padding: var(--space-md); border: 1px solid var(--color-border); border-radius: 8px; border-top: 3px solid var(--color-primary); }
+        .card h3 { font-size: 1.1rem; font-weight: 600; color: var(--color-black); margin-bottom: var(--space-xs); }
+        .card p { color: var(--color-neutral); font-size: 0.95rem; }
+
+        /* Differentiation (Jury) */
+        .diff { background: var(--color-bg-soft); }
+        .diff-item { max-width: 640px; margin: 0 auto var(--space-md); padding-left: var(--space-md); border-left: 3px solid var(--color-primary); }
+        .diff-item h3 { color: var(--color-black); font-size: 1.15rem; margin-bottom: 4px; }
+        .diff-item p { color: var(--color-dark-gray); }
+
+        /* Tables */
+        .table-wrap { overflow-x: auto; margin: var(--space-md) 0; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--color-border); font-size: 0.95rem; }
+        th { font-weight: 600; color: var(--color-black); }
+        tbody tr:nth-child(even) { background: var(--color-bg-soft); }
+        .yes { color: var(--color-success); font-weight: 600; }
+        .no { color: #ef4444; font-weight: 600; }
+        .warn { color: #f59e0b; font-weight: 600; }
+        .center { text-align: center; }
+
+        /* CTA */
+        .cta { text-align: center; }
+        .cta h2 { font-size: 1.7rem; color: var(--color-black); margin-bottom: var(--space-sm); }
+
         /* Footer */
-        footer {
-            padding: var(--space-xl) 0;
-            border-top: 1px solid var(--color-border);
-            text-align: center;
-            color: var(--color-neutral);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-lg);
-            margin-bottom: var(--space-md);
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--color-neutral);
-        }
-        
-        .footer-links a:hover {
-            color: var(--color-primary);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: var(--space-md);
-            }
-            
-            .comparison-table th,
-            .comparison-table td {
-                padding: var(--space-sm);
-                font-size: 0.875rem;
-            }
-        }
-        
-        /* Print */
-        @media print {
-            body {
-                color: #000;
-            }
-            a::after {
-                content: " (" attr(href) ")";
-                font-size: 0.75rem;
-                color: #666;
-            }
+        footer { padding: var(--space-xl) 0; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-neutral); }
+        .footer-links { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-sm); }
+        .footer-links a { color: var(--color-neutral); }
+        .footer-links a:hover { color: var(--color-primary); }
+
+        @media (max-width: 600px) {
+            nav { display: none; }
+            .hero { padding: var(--space-lg) 0; }
         }
     </style>
 </head>
@@ -320,194 +113,139 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon"></div>
-                    <span>open-gov-automation</span>
-                </div>
+                <div class="logo"><span class="logo-mark"></span><span>open-gov-automation</span></div>
                 <nav>
-                    <a href="#projekt">Projekt</a>
+                    <a href="#wert">Wert</a>
+                    <a href="#differenzierung">Differenzierung</a>
                     <a href="#wirtschaftlichkeit">Wirtschaftlichkeit</a>
-                    <a href="#vergleich">Vergleich</a>
                     <a href="#dokumentation">Dokumentation</a>
                 </nav>
             </div>
         </div>
     </header>
-    
+
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Souveräne KI für Kommunen</h1>
-                <p>Lokale, unabhängige KI-Einheit für die öffentliche Verwaltung. Keine Cloud-Abhängigkeit, 100% DSGVO-konform, Open Source.</p>
-                <img src="docs/open-gov-teaser.png" alt="open-gov-automation: 2 lokale Server, KI-Einheit, Bürger & Verwaltung" class="hero-image">
+                <p class="eyebrow">Minimal · Stoisch · Unix-Philosophie</p>
+                <h1>Souveräne KI für Ihre Verwaltung.<br>Lokal. Vorausschauend. Ohne Cloud-Zwang.</h1>
+                <p class="lead">Wir helfen Kommunen, Verwaltungsarbeit schneller, sicherer und unabhängig zu erledigen — mit Künstlicher Intelligenz, die bei Ihnen vor Ort läuft, nicht in einer US-Cloud.</p>
+                <div class="trust-bar">
+                    <span>DSGVO-by-Design</span>
+                    <span>Open Source</span>
+                    <span>Kein Lock-in</span>
+                    <span>Keine US-Cloud</span>
+                </div>
                 <div class="hero-actions">
-                    <a href="README.md" class="btn">Projektdetails</a>
-                    <a href="mailto:open-gov-automation@graphwiz.ai" class="btn btn-secondary">Kontakt</a>
+                    <a href="mailto:open-gov-automation@graphwiz.ai" class="btn">Pilot werden</a>
+                    <a href="README.md" class="btn btn-secondary">Dokumentation</a>
+                </div>
+                <img src="docs/open-gov-teaser.png" alt="open-gov-automation: 2 lokale GX10-Geräte, gekoppelt zu einer KI-Einheit" class="hero-image">
+            </div>
+        </section>
+
+        <section id="wert">
+            <div class="container">
+                <h2 class="section-title">Was Kommunen davon haben</h2>
+                <p class="section-intro">Ein Pilotprojekt (6 Monate, 60.000 €) — danach betreiben Sie das System selbst, souverän und ohne laufende Abhängigkeit.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Datensouveränität</h3>
+                        <p>2 gekoppelte Geräte im Rathaus. Keine Daten verlassen die Kommune. 100 % Kontrolle.</p>
+                    </div>
+                    <div class="card">
+                        <h3>DSGVO-konform</h3>
+                        <p>TOMs, VVT und DSFA von Anfang an integriert. Keine nachträglichen Rechtsrisiken.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Wirtschaftlich</h3>
+                        <p>Einmalige Investition von 60.000 €. Amortisation unter 12 Monaten. Keine Lizenzgebühren.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Eigenkompetenz</h3>
+                        <p>Wir schulen Ihre Mitarbeitenden zu KI-Operatoren. Nach 6 Monaten betreiben Sie selbst.</p>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <section class="value-props">
+
+        <section id="differenzierung" class="diff">
             <div class="container">
-                <div class="value-grid">
-                    <div class="value-card">
-                        <h3>🏠 Lokal</h3>
-                        <p>2 gekoppelte Server im Rathaus. Keine Daten verlassen die Kommune. 100% Datensouveränität.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>⚖️ DSGVO-konform</h3>
-                        <p>Alle Compliance-Dokumente (TOMs, VVT, DSFA) von Anfang an integriert. Keine rechtlichen Risiken.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>💰 Kostengünstig</h3>
-                        <p>Einmalige Investition von 60.000 €. Amortisation < 12 Monate. Keine laufenden Lizenzgebühren.</p>
-                    </div>
-                    <div class="value-card">
-                        <h3>🎓 Eigenkompetenz</h3>
-                        <p>Wir schulen Ihre Mitarbeiter zu KI-Operatoren. Nach 6 Monaten betreiben Sie selbst.</p>
-                    </div>
+                <h2 class="section-title">Warum wir anders sind</h2>
+                <p class="section-intro">Die meisten Ansätze automatisieren bestehende Prozesse. Wir setzen auf vorausschauende, souveräne Intelligenz — ergänzend, nicht konkurrierend.</p>
+                <div class="diff-item">
+                    <h3>Predictive, nicht nur reaktiv</h3>
+                    <p>Die KI erkennt Muster und Risiken vor dem Ereignis (z. B. Bauanträge vorab prüfen), statt erst nach Einreichung zu reagieren.</p>
+                </div>
+                <div class="diff-item">
+                    <h3>Minimal. Stoisch. Unix-Philosophie.</h3>
+                    <p>Kleine, fassbare, souveräne Werkzeuge statt monolithischer Blackboxen. Transparent, resilient, ohne Overhead.</p>
+                </div>
+                <div class="diff-item">
+                    <h3>Ergänzung, nicht Konkurrenz</h3>
+                    <p>Lokale Intelligenz ergänzt Portalverbund und Standardlösungen — und schließt die Lücke der strategisch-vorausschauenden KI.</p>
                 </div>
             </div>
         </section>
-        
-        <section id="wirtschaftlichkeit" class="comparison">
+
+        <section id="wirtschaftlichkeit">
             <div class="container">
-                <h2>Wirtschaftlichkeitsvergleich</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Ein Pilotprojekt amortisiert sich bereits nach <strong>12 Monaten</strong> (bei 150+ Anträgen/Jahr).</p>
-                
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Kriterium</th>
-                            <th>open-gov-automation</th>
-                            <th>Gehostetes LLM</th>
-                            <th>Individuelle SaaS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Kosten (5 Jahre)</strong></td>
-                            <td>~130.000 €</td>
-                            <td>~500.000 €</td>
-                            <td>~500.000 €</td>
-                        </tr>
-                        <tr>
-                            <td>Datensouveränität</td>
-                            <td class="check">✅ 100%</td>
-                            <td class="cross">❌ 0%</td>
-                            <td class="warning">⚠️ 50–80%</td>
-                        </tr>
-                        <tr>
-                            <td>DSGVO-Konformität</td>
-                            <td class="check">✅ Voll</td>
-                            <td class="warning">⚠️ Eingeschränkt</td>
-                            <td class="warning">⚠️ Abhängig</td>
-                        </tr>
-                        <tr>
-                            <td>Lock-in-Risiko</td>
-                            <td class="check">✅ Keines</td>
-                            <td class="cross">❌ Hoch</td>
-                            <td class="cross">❌ Hoch</td>
-                        </tr>
-                        <tr>
-                            <td>Schulungsaufwand</td>
-                            <td>Mittel (6 Monate)</td>
-                            <td class="check">✅ Gering</td>
-                            <td class="check">✅ Gering</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <p style="text-align: center;">
-                    <a href="examples/wirtschaftlichkeit.md" class="btn">Detaillierte Analyse →</a>
-                </p>
+                <h2 class="section-title">Wirtschaftlichkeitsvergleich</h2>
+                <p class="section-intro">Ein Pilotprojekt amortisiert sich bereits nach <strong>12 Monaten</strong> (bei 150+ Anträgen/Jahr).</p>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Kriterium</th><th>open-gov-automation</th><th>Gehostetes LLM</th><th>Individuelle SaaS</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Kosten (5 Jahre)</strong></td><td>~130.000 €</td><td>~500.000 €</td><td>~500.000 €</td></tr>
+                            <tr><td>Datensouveränität</td><td class="yes">100 %</td><td class="no">0 %</td><td class="warn">50–80 %</td></tr>
+                            <tr><td>DSGVO-Konformität</td><td class="yes">Voll</td><td class="warn">Eingeschränkt</td><td class="warn">Abhängig</td></tr>
+                            <tr><td>Lock-in-Risiko</td><td class="yes">Keines</td><td class="no">Hoch</td><td class="no">Hoch</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="center"><a href="examples/wirtschaftlichkeit.md" class="btn">Detaillierte Analyse</a></p>
             </div>
         </section>
-        
-        <section id="vergleich" class="comparison">
-            <div class="container">
-                <h2>Lösungsvergleich: open-gov-automation vs. Alternativen</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Warum lokale KI die beste Wahl für Kommunen ist.</p>
-                
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Aspekt</th>
-                            <th>open-gov-automation</th>
-                            <th>Gehostetes LLM</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Bereitstellung</strong></td>
-                            <td>On-Premise (lokal)</td>
-                            <td>Cloud (extern)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Datenstandort</strong></td>
-                            <td class="check">✅ In der Kommune</td>
-                            <td class="cross">❌ Extern (oft USA)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Anpassbarkeit</strong></td>
-                            <td class="check">✅ Voll (Open Source)</td>
-                            <td class="cross">❌ Begrenzt</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Kontrolle</strong></td>
-                            <td class="check">✅ 100% bei der Kommune</td>
-                            <td class="cross">❌ Beim Anbieter</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Langfristige Kosten</strong></td>
-                            <td class="check">✅ Gering (2.000 €/Jahr)</td>
-                            <td class="cross">❌ Hoch (25.000–50.000 €/Jahr)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Wartung</strong></td>
-                            <td>Eigenverantwortung</td>
-                            <td class="check">✅ Kein Aufwand</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <p style="text-align: center;">
-                    <a href="examples/loesungsvergleich.md" class="btn">Vollständiger Vergleich →</a>
-                </p>
-            </div>
-        </section>
-        
+
         <section id="dokumentation">
             <div class="container">
-                <h2>Dokumentation</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Alle Informationen für Entscheidungsträger und Techniker.</p>
-                
-                <div class="value-grid">
-                    <div class="value-card">
-                        <h3>📋 Projekt</h3>
-                        <p><a href="examples/60k-mesh-cluster-projekt.md">60k-Pilotprojekt</a><br>
-                        Detaillierte Skizze für 6 Monate Implementation.</p>
+                <h2 class="section-title">Dokumentation</h2>
+                <p class="section-intro">Alle Informationen für Entscheidungsträgerinnen und -träger sowie Technikerinnen und Techniker.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Projekt</h3>
+                        <p><a href="examples/60k-mesh-cluster-projekt.md">60k-Pilotprojekt</a><br>Detaillierte Skizze für 6 Monate Umsetzung.</p>
                     </div>
-                    <div class="value-card">
-                        <h3>💰 Wirtschaftlichkeit</h3>
-                        <p><a href="examples/wirtschaftlichkeit.md">ROI-Analyse</a><br>
-                        Kosten-Nutzen-Berechnung für verschiedene Szenarien.</p>
+                    <div class="card">
+                        <h3>Wirtschaftlichkeit</h3>
+                        <p><a href="examples/wirtschaftlichkeit.md">ROI-Analyse</a><br>Kosten-Nutzen für verschiedene Szenarien.</p>
                     </div>
-                    <div class="value-card">
-                        <h3>⚖️ Compliance</h3>
-                        <p><a href="compliance/">TOMs, VVT, DSFA</a><br>
-                        Alle DSGVO-Dokumente für den Einsatz.</p>
+                    <div class="card">
+                        <h3>Vergleich</h3>
+                        <p><a href="examples/loesungsvergleich.md">Lösungsvergleich</a><br>open-gov-automation vs. Cloud/SaaS.</p>
                     </div>
-                    <div class="value-card">
-                        <h3>🎨 Design</h3>
-                        <p><a href="DESIGN-GUIDE.md">Design Guide</a><br>
-                        Prinzipien für alle visuelle Inhalte.</p>
+                    <div class="card">
+                        <h3>Compliance</h3>
+                        <p><a href="compliance/">TOMs, VVT, DSFA</a><br>Alle DSGVO-Dokumente.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Werden Sie Pilot-Gemeinde.</h2>
+                <p class="section-intro">Wir begleiten Sie von der Problemanalyse bis zum selbst betriebenen System.</p>
+                <div class="hero-actions">
+                    <a href="mailto:open-gov-automation@graphwiz.ai" class="btn">Kontakt aufnehmen</a>
+                    <a href="README.md" class="btn btn-secondary">Mehr zur Methode</a>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -516,11 +254,9 @@
                 <a href="DESIGN-GUIDE.md">Design Guide</a>
                 <a href="mailto:open-gov-automation@graphwiz.ai">Kontakt</a>
             </div>
-            <p>© 2026 graphwiz | Open Source (GPL-3.0) | Souveräne KI für Kommunen</p>
+            <p>© 2026 graphwiz · Open Source (GPL-3.0) · Souveräne KI für Kommunen</p>
             <p><em>KI als Werkzeug. Nicht als Blackbox. Nicht in der Cloud. Bei Ihnen.</em></p>
         </div>
     </footer>
-    
-    <!-- No JavaScript required -->
 </body>
 </html>
