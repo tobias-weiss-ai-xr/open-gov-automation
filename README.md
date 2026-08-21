@@ -88,6 +88,7 @@ Verwaltungen arbeiten heute meist *reaktiv*:
 - [Lösungsvergleich](examples/loesungsvergleich.md) – open-gov-automation vs. Cloud/SaaS
 - [Compliance](compliance/) – TOMs, VVT, DSFA (DSGVO-konform)
 - [Pilot-Kandidaten](examples/mittelhessen-pilot-kandidaten.md) – Fokusregion Mittelhessen
+- [Kritische Prüfung](docs/kritische-pruefung.md) – Selbstkritik aus 6 Perspektiven (Kommune, Bund, Land, Wettbewerb, Unis)
 
 ---
 

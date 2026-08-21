@@ -125,7 +125,7 @@ unsere DSGVO-Vorlagen greifen.)
 
 | Modul | Anwendungsfall | CI-Pipeline |
 |-------|---------------|-------------|
-| Fördermittel *(optionales Modul)* | Anbindung (Kommunalportal, EU), KI-Bewertung, Fristen | `examples/admin-fördermittel-ci.yml` |
+| Fördermittel *(optionales Modul)* | Anbindung (Kommunalportal, EU), KI-Bewertung, Fristen | – |
 | Bauanträge | **Vorausschauende** Baurecht-Prüfung (vorab) | - |
 
 Jedes Modul: eigenes Containerverfahren, eigener Datenbereich,
