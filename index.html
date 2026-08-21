@@ -70,8 +70,9 @@
         .section-title { text-align: center; font-size: 1.6rem; font-weight: 700; color: var(--color-black); margin-bottom: var(--space-md); }
         .section-intro { text-align: center; color: var(--color-neutral); max-width: 620px; margin: 0 auto var(--space-lg); }
 
-        /* Value grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-md); }
+        /* Value grid — 4 tiles = 2×2 */
+        .grid { display: grid; grid-template-columns: 1fr; gap: var(--space-md); }
+        @media (min-width: 560px) { .grid { grid-template-columns: 1fr 1fr; } }
         .card { padding: var(--space-md); border: 1px solid var(--color-border); border-radius: 8px; border-top: 3px solid var(--color-primary); }
         .card h3 { font-size: 1.1rem; font-weight: 600; color: var(--color-black); margin-bottom: var(--space-xs); }
         .card p { color: var(--color-neutral); font-size: 0.95rem; }
