@@ -113,4 +113,11 @@ Sie erwägen, Partner oder Pilot zu werden? So starten Sie:
 
 ---
 
+## Impressum & Initiative
+
+**Initiative:** Tobias Weiss IT-Services, Einzelunternehmer  
+**KI-Assistenz-Hinweis:** Diese Unterlagen wurden mit Unterstützung von KI-Assistenz erstellt. Die inhaltliche und rechtliche Verantwortung trägt Tobias Weiss IT-Services, Einzelunternehmer.
+
+---
+
 *KI als Werkzeug. Nicht als Blackbox. Nicht in der Cloud. Bei Ihnen.*
