@@ -88,7 +88,7 @@ Verwaltungen arbeiten heute meist *reaktiv*:
 - [Lösungsvergleich](examples/loesungsvergleich.md) – open-gov-automation vs. Cloud/SaaS
 - [Compliance](compliance/) – TOMs, VVT, DSFA (DSGVO-konform)
 - [Pilot-Kandidaten](examples/mittelhessen-pilot-kandidaten.md) – Fokusregion Mittelhessen
-- [Kritische Prüfung](docs/kritische-pruefung.md) – Selbstkritik aus 6 Perspektiven (Kommune, Bund, Land, Wettbewerb, Unis)
+- [Design Guide](DESIGN-GUIDE.md) – Visuelle Prinzipien
 
 ---
 
@@ -107,9 +107,10 @@ Sie erwägen, Partner oder Pilot zu werden? So starten Sie:
 
 ## Kontakt
 
-**E-Mail:** [open-gov-automation@graphwiz.ai](mailto:open-gov-automation@graphwiz.ai)  
-**Repository:** [GitHub](https://github.com/tobias-weiss-ai-xr/open-gov-automation)  
-**Lizenz:** Open Source (GPL-3.0)
+- **E-Mail:** [open-gov-automation@graphwiz.ai](mailto:open-gov-automation@graphwiz.ai)
+- **Repository:** [GitHub](https://github.com/tobias-weiss-ai-xr/open-gov-automation)
+- **Startseite:** [index.html](index.html) (HTML-Version)
+- **Lizenz:** Open Source (GPL-3.0)
 
 ---
 

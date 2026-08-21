@@ -165,7 +165,7 @@ Monat 5-6: Eigenständiger Betrieb
 - Ethische Fragen (Verantwortung, Transparenz)
 
 #### **2. Systemarchitektur (1 Tag)**
-- Übersicht: 2× Server, Mesh-Netzwerk, Backup
+- Übersicht: 2× Server, gekoppelt, Backup
 - Datenflüsse verstehen
 - Sicherheitskonzept (TOMs, DSGVO)
 - Wartungsarbeiten (Updates, Backups)
