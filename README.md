@@ -4,7 +4,8 @@
 
 ![open-gov-automation — 2 lokale GX10-Geräte, gekoppelt zu einer souveränen KI-Einheit](docs/open-gov-teaser.png)
 
-[**▶ Live-Demo starten**](https://tobias-weiss-ai-xr.github.io/open-gov-automation/demo.html?auto=1)
+[**▶ Live-Demo starten**](https://tobias-weiss-ai-xr.github.io/open-gov-automation/demo.html?auto=1) · [**Startseite öffnen**](https://tobias-weiss-ai-xr.github.io/open-gov-automation/)
+
 Der Workflow in 2 Minuten: vorausschauende Bauantrags-Prüfung, Dual-Cluster-Failover, Hebelwirkung. (Frontend-Simulation, keine echten Daten.)
 
 ---
