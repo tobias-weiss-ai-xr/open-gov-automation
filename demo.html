@@ -183,12 +183,15 @@
         /* ---------- Alpine: Terminal-Zustand ---------- */
         function term() {
             return {
-                lines: [], cmd: '', hist: [], hi: -1, busy: false,
-                aDown: false, bActive: false, chartShown: false, chartDrawn: false, timers: [],
+                lines: [], cmd: '', cmdHist: [], hi: -1, busy: false,
+                aDown: false, bActive: false, chartShown: false, chartDrawn: false, timers: [], demoDone: false,
 
                 init() { this.say([["open-gov-automation v0.6 · Souveräne KI-Einheit", "accent"],
                                   ["POST /boot …", "dim"]], 0);
-                    setTimeout(() => this.bootLines(), 220); },
+                    setTimeout(() => this.bootLines(), 220);
+                    if (new URLSearchParams(location.search).get("auto") === "1") {
+                        setTimeout(() => this.run("demo"), 2600);
+                    } },
 
                 now() { return new Date().toTimeString().slice(0, 8); },
                 add(m, c) { this.lines.push({ t: this.now(), m: m, c: c || "" }); this.$nextTick(() => { let o = this.$refs.out; if (o) o.scrollTop = o.scrollHeight; }); },
@@ -212,16 +215,16 @@
 
                 enter() {
                     let c = this.cmd.trim(); if (!c || this.busy) return;
-                    this.hist.unshift(c); this.hi = -1; this.cmd = "";
+                    this.cmdHist.unshift(c); this.hi = -1; this.cmd = "";
                     this.add("> " + c, "prompt");
                     this.run(c);
                 },
                 hist(dir) {
-                    if (!this.hist.length) return;
+                    if (!this.cmdHist.length) return;
                     this.hi = dir ? this.hi + 1 : this.hi - 1;
                     if (this.hi < 0) { this.hi = -1; this.cmd = ""; }
-                    else if (this.hi >= this.hist.length) { this.hi = this.hist.length - 1; }
-                    else this.cmd = this.hist[this.hi];
+                    else if (this.hi >= this.cmdHist.length) { this.hi = this.cmdHist.length - 1; }
+                    else this.cmd = this.cmdHist[this.hi];
                 },
 
                 run(c) {
@@ -353,16 +356,18 @@
                     ], 300);
                     this.drawChart();
                     this.chartShown = true;
+                    this.demoDone = true;
                     this.say([["→ Interessiert? Kommune werden: open-gov-automation@graphwiz.ai", "accent"]], 800);
                 },
 
                 cmdDemo() {
                     if (this.busy) return;
-                    this.clear(); this.aDown = false; this.bActive = false;
+                    this.clear(); this.aDown = false; this.bActive = false; this.demoDone = false;
                     this.add("> demo", "prompt");
                     this.busy = true;
                     this.say([
                         ["— Geführte Vorführung: Wie arbeitet die KI-Einheit? —", "accent"],
+                        ["open-gov-automation v0.6 · POST /boot", "dim"],
                         ["Schritt 1/5  Boot — 2 Geräte, 0 Abhängigkeiten"],
                         ["Schritt 2/5  Status der Einheit"],
                         ["Schritt 3/5  Vorausschauende Prüfung — Bauantrag VOR Einreichung"],
