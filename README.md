@@ -6,6 +6,8 @@
 
 [**▶ Live-Demo starten**](https://tobias-weiss-ai-xr.github.io/open-gov-automation/demo.html?auto=1) · [**Startseite öffnen**](https://tobias-weiss-ai-xr.github.io/open-gov-automation/)
 
+[**Kennzahlen-Dashboard öffnen**](https://tobias-weiss-ai-xr.github.io/open-gov-automation/dashboard.html) — Kosten, ROI, Szenarien & Vergleich, interaktiv.
+
 Der Workflow in 2 Minuten: vorausschauende Bauantrags-Prüfung, Dual-Cluster-Failover, Hebelwirkung. (Frontend-Simulation, keine echten Daten.)
 
 ---

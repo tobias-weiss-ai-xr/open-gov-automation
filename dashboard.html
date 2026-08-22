@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennzahlen-Dashboard · open-gov-automation</title>
+    <meta name="description" content="Interaktives Kennzahlen-Dashboard: Kosten, ROI, Amortisation und Vergleich — zur Entscheidungsunterstützung für Kommunen. Frontend, DSGVO-neutral.">
+    <meta property="og:title" content="Kennzahlen-Dashboard · open-gov-automation">
+    <meta property="og:description" content="Kosten, ROI, Szenarien &amp; Vergleich — interaktiv für Entscheiderinnen und Entscheider.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tobias-weiss-ai-xr.github.io/open-gov-automation/dashboard.html">
+    <link rel="canonical" href="https://tobias-weiss-ai-xr.github.io/open-gov-automation/dashboard.html">
+    <style>
+        :root {
+            --primary: #2563eb; --dark: #1e40af; --light: #dbeafe;
+            --ok: #10b981; --warn: #f59e0b; --err: #ef4444;
+            --gray: #6b7280; --dgray: #374151; --black: #111827;
+            --white: #ffffff; --soft: #f8fafc; --border: #e5e7eb;
+            --font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { overflow-x: hidden; }
+        body { font-family: var(--font); background: var(--white); color: var(--dgray); line-height: 1.5; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+        header { padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--black); font-size: 1rem; }
+        .logo-mark { width: 22px; height: 22px; background: var(--primary); border-radius: 3px; }
+        nav a { display: inline-block; margin-left: 16px; padding: 10px 0; font-weight: 500; color: var(--dgray); font-size: 0.9rem; }
+        nav a.akt { color: var(--primary); }
+        @media (max-width: 620px) { nav { display: none; } }
+
+        main { padding: 32px 0 64px; }
+        h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--black); margin: 8px 0 4px; }
+        .sub { color: var(--gray); margin-bottom: 28px; max-width: 720px; }
+
+        /* KPI-Kacheln */
+        .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 32px; }
+        .kpi { border: 1px solid var(--border); border-top: 3px solid var(--primary); border-radius: 8px; padding: 16px; background: var(--white); }
+        .kpi.green { border-top-color: var(--ok); }
+        .kpi .wert { font-size: 1.5rem; font-weight: 700; color: var(--black); line-height: 1.1; }
+        .kpi.green .wert { color: var(--ok); }
+        .kpi .label { font-size: 0.8rem; color: var(--gray); margin-top: 6px; }
+
+        /* Diagramme */
+        .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 32px; }
+        @media (max-width: 780px) { .charts { grid-template-columns: 1fr; } }
+        .panel { border: 1px solid var(--border); border-radius: 8px; padding: 18px; background: var(--soft); }
+        .panel h2 { font-size: 1rem; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+        .panel .hint { font-size: 0.78rem; color: var(--gray); margin-bottom: 12px; }
+        .panel canvas { width: 100%; height: auto; background: var(--white); border-radius: 4px; }
+
+        /* Rechner */
+        .rechner { border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-bottom: 32px; background: var(--soft); }
+        .rechner h2 { font-size: 1rem; font-weight: 600; color: var(--black); }
+        .rechner-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-top: 14px; }
+        @media (max-width: 780px) { .rechner-grid { grid-template-columns: 1fr; } }
+        .slider-row label { font-size: 0.85rem; color: var(--dgray); }
+        .slider-row input[type=range] { width: 100%; margin: 10px 0; accent-color: var(--primary); }
+        .slider-val { font-size: 1.4rem; font-weight: 700; color: var(--black); }
+        .out-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding: 8px 0; }
+        .out-row:last-child { border-bottom: none; }
+        .out-row .k { color: var(--gray); font-size: 0.9rem; }
+        .out-row .v { font-weight: 600; color: var(--black); }
+        .out-row .v.green { color: var(--ok); }
+        .out-row .v.red { color: var(--err); }
+        .model-note { font-size: 0.75rem; color: var(--gray); margin-top: 12px; }
+        .rechner canvas { max-height: 180px; background: var(--white); border-radius: 4px; }
+
+        /* Tabelle + Filter */
+        .tbl-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+        .tbl-head h2 { font-size: 1.1rem; font-weight: 600; color: var(--black); }
+        .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+        .fbtn { font-family: var(--font); font-size: 0.8rem; padding: 6px 12px; border: 1px solid var(--border); background: var(--white); color: var(--dgray); border-radius: 999px; cursor: pointer; }
+        .fbtn.akt { background: var(--primary); border-color: var(--primary); color: var(--white); }
+        .search { font-family: var(--font); font-size: 0.85rem; padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px; min-width: 180px; }
+        .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 32px; }
+        table { width: 100%; border-collapse: collapse; min-width: 720px; }
+        th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; vertical-align: top; }
+        th { background: var(--soft); font-weight: 600; color: var(--black); white-space: nowrap; cursor: pointer; user-select: none; }
+        th:hover { background: var(--light); }
+        th .arrow { color: var(--gray); font-size: 0.7rem; }
+        tbody tr:nth-child(even) { background: var(--soft); }
+        td .cat { display: inline-block; font-size: 0.68rem; color: var(--gray); border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; margin-right: 8px; }
+        .yes { color: var(--ok); font-weight: 600; }
+        .no { color: var(--err); font-weight: 600; }
+        .warn { color: var(--warn); font-weight: 600; }
+
+        /* Aufstellung */
+        .setup { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 8px; }
+        .setup table { min-width: 560px; }
+        .setup td .tag { display: inline-block; font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; }
+        .tag.blue { background: var(--light); color: var(--dark); }
+        .tag.green { background: #d1fae5; color: #047857; }
+        .tag.warn { background: #fef3c7; color: #b45309; }
+
+        footer { border-top: 1px solid var(--border); padding: 24px 0 48px; text-align: center; color: var(--gray); font-size: 0.85rem; }
+        footer a { color: var(--gray); }
+        footer a:hover { color: var(--primary); }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body x-data="dash()" x-init="init()">
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo"><span class="logo-mark"></span><span>open-gov-automation</span></div>
+            <nav>
+                <a href="index.html">Start</a>
+                <a href="demo.html">Live-Demo</a>
+                <a href="dashboard.html" class="akt">Dashboard</a>
+                <a href="mailto:open-gov-automation@graphwiz.ai">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Kennzahlen-Dashboard</h1>
+        <p class="sub">Kosten, ROI, Szenarien und Vergleich — kompakt für Entscheiderinnen und Entscheider. Alle Werte als <strong>Modellannahmen</strong> auf Basis der Projektdokumente; die individuelle Kalkulation erfolgt im Projekt.</p>
+
+        <!-- KPI -->
+        <div class="kpis">
+            <template x-for="(k, i) in data.kpis" :key="i">
+                <div class="kpi" :class="k.klasse">
+                    <div class="wert" x-text="k.wert"></div>
+                    <div class="label" x-text="k.label"></div>
+                </div>
+            </template>
+        </div>
+
+        <!-- Diagramme -->
+        <div class="charts">
+            <div class="panel">
+                <h2>Kosten über 5 Jahre</h2>
+                <div class="hint">in 1.000 € — einmalige Investition vs. laufende Kosten</div>
+                <canvas id="cKosten" width="460" height="240" style="width:100%;height:auto;"></canvas>
+            </div>
+            <div class="panel">
+                <h2>ROI nach 3 Jahren je Kommunengröße</h2>
+                <div class="hint">Rendite auf die Pilot-Investition — je mehr Anträge, desto höher</div>
+                <canvas id="cRoi" width="460" height="240" style="width:100%;height:auto;"></canvas>
+            </div>
+        </div>
+
+        <!-- Szenario-Rechner -->
+        <div class="rechner">
+            <h2>Szenario-Rechner — Anträge pro Jahr</h2>
+            <div class="rechner-grid">
+                <div class="slider-row">
+                    <label for="anteile">Bauanträge &amp; vergleichbare Vorgänge pro Jahr</label>
+                    <input id="anteile" type="range" min="50" max="1000" step="10" x-model.number="anteile">
+                    <div class="slider-val" x-text="anteile + ' / Jahr'"></div>
+                    <canvas id="cRueck" width="420" height="170" style="width:100%;height:auto;"></canvas>
+                </div>
+                <div>
+                    <div class="out-row"><span class="k">Einsparung pro Jahr</span><span class="v green" x-text="fmt(jahrErsparnis())"></span></div>
+                    <div class="out-row"><span class="k">Amortisation der Investition</span><span class="v" x-text="amortText()"></span></div>
+                    <div class="out-row"><span class="k">Netto-Ersparnis über 5 Jahre</span><span class="v green" x-text="fmt(ersparnis5())"></span></div>
+                    <div class="out-row"><span class="k">ROI nach 3 Jahren</span><span class="v green" x-text="roiText()"></span></div>
+                    <div class="out-row"><span class="k">Rückläufe (ohne → mit KI)</span><span class="v" x-text="rueckOhne() + ' → ' + rueckMit()"></span></div>
+                    <p class="model-note" x-text="data.model.einheit"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vergleich -->
+        <div class="tbl-head">
+            <h2>Vergleich der Lösungswege</h2>
+            <div class="filters">
+                <button class="fbtn" :class="kategorie==='Alle' && 'akt'" @click="kategorie='Alle'">Alle</button>
+                <button class="fbtn" :class="kategorie==='Souveränität' && 'akt'" @click="kategorie='Souveränität'">Souveränität</button>
+                <button class="fbtn" :class="kategorie==='Kosten' && 'akt'" @click="kategorie='Kosten'">Kosten</button>
+                <button class="fbtn" :class="kategorie==='Betrieb' && 'akt'" @click="kategorie='Betrieb'">Betrieb</button>
+                <input class="search" type="search" x-model="search" placeholder="Filtern …">
+            </div>
+        </div>
+        <div class="table-wrap" id="vergleich">
+            <table>
+                <thead>
+                    <tr>
+                        <th @click="sort('kriterium')">Kriterium <span class="arrow" x-show="sortKey==='kriterium'" x-text="sortAsc ? '▲' : '▼'"></span></th>
+                        <th>open-gov-automation</th>
+                        <th>Gehostetes LLM</th>
+                        <th>Individuelle SaaS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="(r, i) in rows()" :key="i">
+                        <tr>
+                            <td><span class="cat" x-text="r.kategorie"></span><span x-text="r.kriterium"></span></td>
+                            <td><span :class="cls(r.o)" x-text="r.open"></span></td>
+                            <td><span :class="cls(r.h)" x-text="r.hosted"></span></td>
+                            <td><span :class="cls(r.s)" x-text="r.saas"></span></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Aufstellung -->
+        <div class="tbl-head"><h2>Kosten je Kommune nach Aufstellungs-Variante</h2></div>
+        <div class="setup table-wrap">
+            <table>
+                <thead><tr><th>Variante</th><th>Kommunen</th><th>je Kommune</th><th>Beschreibung</th></tr></thead>
+                <tbody>
+                    <template x-for="(s, i) in data.aufstellung" :key="i">
+                        <tr>
+                            <td><span class="tag" :class="s.klasse" x-text="s.name"></span></td>
+                            <td x-text="s.kommunen"></td>
+                            <td><strong x-text="fmt(s.jeKommune)"></strong></td>
+                            <td x-text="s.beschreibung"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="model-note">Details: <a href="examples/60k-mesh-cluster-projekt.md">Projektskizze</a> · <a href="examples/wirtschaftlichkeit.md">Wirtschaftlichkeit</a> · <a href="examples/loesungsvergleich.md">Lösungsvergleich</a> · <a href="examples/dezentraler-betrieb.md">Dezentraler Betrieb</a> — im Browser: <a href="demo.html">Live-Demo</a>.</p>
+    </main>
+
+    <footer>
+        Kennzahlen-Dashboard · Frontend-Simulation, keine personenbezogenen Daten. ·
+        <a href="index.html">Startseite</a> · <a href="demo.html">Live-Demo</a> · <a href="https://github.com/tobias-weiss-ai-xr/open-gov-automation">GitHub</a><br>
+        Eine Initiative von <strong>Tobias Weiss IT-Services, Einzelunternehmer</strong> · Open Source (GPL-3.0)
+    </footer>
+
+    <script>
+        /* Fallback-Daten (wenn fetch auf file:// nicht möglich ist) — identisch zu data/dashboard.json */
+        const DASH_FALLBACK = {
+            kpis: [
+                { "wert": "60.000 €", "label": "6-Monats-Pilot inkl. Hardware & Schulung", "klasse": "blue" },
+                { "wert": "< 12 Monate", "label": "Amortisation (ab 150 Anträgen/Jahr)", "klasse": "green" },
+                { "wert": "~80/Jahr", "label": "Break-even ab", "klasse": "blue" },
+                { "wert": "207–515 %", "label": "ROI nach 3 Jahren (je Kommunengröße)", "klasse": "green" },
+                { "wert": "−75 %", "label": "Bearbeitungszeit durch Vorabprüfung", "klasse": "blue" },
+                { "wert": "−83 %", "label": "Rückläufe (12 → 2 pro 100 Anträge)", "klasse": "green" }
+            ],
+            kosten5: [
+                { "name": "open-gov-automation", "wert": 130, "farbe": "#10b981", "hinweis": "Einmalige Investition + Wartung" },
+                { "name": "Gehostetes LLM", "wert": 500, "farbe": "#ef4444", "hinweis": "Laufende Lizenz- & Betriebskosten" },
+                { "name": "Individuelle SaaS", "wert": 500, "farbe": "#ef4444", "hinweis": "Laufende Plattformkosten" }
+            ],
+            roi3: [
+                { "kommune": "Klein (≤ 25k Ew.)", "roi": 207 },
+                { "kommune": "Mittel (25–100k Ew.)", "roi": 340 },
+                { "kommune": "Groß (100k+ Ew.)", "roi": 515 }
+            ],
+            vergleich: [
+                { "kriterium": "Datensouveränität", "kategorie": "Souveränität", "open": "100 %", "hosted": "0 %", "saas": "50–80 %", "o": "y", "h": "n", "s": "w" },
+                { "kriterium": "DSGVO-Konformität", "kategorie": "Souveränität", "open": "Voll", "hosted": "Eingeschränkt", "saas": "Abhängig", "o": "y", "h": "w", "s": "w" },
+                { "kriterium": "US-Cloud erforderlich", "kategorie": "Souveränität", "open": "Nein", "hosted": "Ja", "saas": "Meist", "o": "y", "h": "n", "s": "n" },
+                { "kriterium": "Lock-in-Risiko", "kategorie": "Souveränität", "open": "Keines", "hosted": "Hoch", "saas": "Hoch", "o": "y", "h": "n", "s": "n" },
+                { "kriterium": "Kosten über 5 Jahre", "kategorie": "Kosten", "open": "~130.000 €", "hosted": "~500.000 €", "saas": "~500.000 €", "o": "y", "h": "n", "s": "n" },
+                { "kriterium": "Laufende Lizenzgebühren", "kategorie": "Kosten", "open": "Keine", "hosted": "Hoch", "saas": "Hoch", "o": "y", "h": "n", "s": "n" },
+                { "kriterium": "Offener Quellcode (GPL-3.0)", "kategorie": "Betrieb", "open": "Ja", "hosted": "Nein", "saas": "Nein", "o": "y", "h": "n", "s": "n" },
+                { "kriterium": "Eigenbetrieb durch die Kommune", "kategorie": "Betrieb", "open": "Ja", "hosted": "Nein", "saas": "Nein", "o": "y", "h": "n", "s": "n" },
+                { "kriterium": "Daten lokal im Verwaltungsgebiet", "kategorie": "Betrieb", "open": "Ja", "hosted": "Selten", "saas": "Nein", "o": "y", "h": "n", "s": "n" }
+            ],
+            aufstellung: [
+                { "name": "A · Lokal", "jeKommune": 60000, "kommunen": 1, "beschreibung": "2 Geräte im Rathaus — Pilot, schneller Start", "klasse": "blue" },
+                { "name": "B · Stadtweit dezentral", "jeKommune": 63000, "kommunen": 1, "beschreibung": "2. Standort — Resilienz gegen Gebäudeausfälle", "klasse": "blue" },
+                { "name": "C · Verbands-Betrieb", "jeKommune": 13000, "kommunen": 5, "beschreibung": "Eine Einheit im Landkreis, 5 Kommunen teilen sie", "klasse": "green" },
+                { "name": "D · Dienstleister-gehostet", "jeKommune": 72000, "kommunen": 1, "beschreibung": "Ausnahme — erfordert Auftragsverarbeitung", "klasse": "warn" }
+            ],
+            model: {
+                invest: 60000, kosten5: 130000, ersparnisJeAntrag: 400, defaultAntraege: 150,
+                ruecklaufOhne: 0.12, ruecklaufMit: 0.02,
+                einheit: "Modellannahmen auf Basis der Projektdaten (etwa: 5 Std. Bearbeitung à 100 €, vermiedene Rückläufe) — individuelle Kalkulation im Projekt."
+            }
+        };
+
+        function dash() {
+            return {
+                data: DASH_FALLBACK, loading: true,
+                kategorie: 'Alle', search: '', sortKey: 'kriterium', sortAsc: true,
+                anteile: DASH_FALLBACK.model.defaultAntraege,
+                charts: {},
+
+                init() {
+                    const self = this;
+                    const load = () => {
+                        fetch('data/dashboard.json')
+                            .then(r => r.ok ? r.json() : Promise.reject('status ' + r.status))
+                            .then(j => { self.data = j; self.anteile = j.model.defaultAntraege; })
+                            .catch(() => { /* Fallback bleibt */ })
+                            .finally(() => { self.loading = false; self.drawCharts(); });
+                    };
+                    if (location.protocol === 'file:') {
+                        // file://-Vorschau: kein fetch (CORS) — Fallback-Daten
+                        this.loading = false;
+                        this.drawCharts();
+                    } else {
+                        load();
+                    }
+                    this.$watch('anteile', v => this.drawRueck(v));
+                },
+
+                /* Vergleich: Filtern + Sortieren */
+                rows() {
+                    let rows = this.data.vergleich.filter(r =>
+                        (this.kategorie === 'Alle' || r.kategorie === this.kategorie) &&
+                        (!this.search || r.kriterium.toLowerCase().includes(this.search.toLowerCase())));
+                    rows = rows.slice().sort((a, b) => {
+                        let av = '' + a[this.sortKey], bv = '' + b[this.sortKey];
+                        return this.sortAsc ? av.localeCompare(bv, 'de') : bv.localeCompare(av, 'de');
+                    });
+                    return rows;
+                },
+                sort(k) {
+                    if (this.sortKey === k) this.sortAsc = !this.sortAsc;
+                    else { this.sortKey = k; this.sortAsc = true; }
+                },
+                cls(v) { return { y: 'yes', w: 'warn', n: 'no' }[v] || ''; },
+
+                /* Szenario-Rechner */
+                jahrErsparnis() { return Math.round(this.anteile * this.data.model.ersparnisJeAntrag); },
+                amortMonate() { const e = this.jahrErsparnis(); return e > 0 ? Math.round(this.data.model.invest / e * 12) : null; },
+                ersparnis5() { return this.jahrErsparnis() * 5 - this.data.model.kosten5; },
+                roi() { const e = this.jahrErsparnis(); return e > 0 ? Math.round((e * 3 - this.data.model.invest) / this.data.model.invest * 100) : 0; },
+                rueckOhne() { return Math.round(this.anteile * this.data.model.ruecklaufOhne); },
+                rueckMit() { return Math.round(this.anteile * this.data.model.ruecklaufMit); },
+                amortText() {
+                    const m = this.amortMonate();
+                    if (!m) return '–';
+                    return m <= 12 ? m + ' Monate' : (m / 12).toFixed(1).replace('.', ',') + ' Jahre';
+                },
+                roiText() { return this.roi() + ' %'; },
+                fmt(n) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n); },
+
+                /* Diagramme */
+                drawCharts() {
+                    if (typeof Chart === 'undefined' || this.charts.c1) return;
+                    const base = { responsive: false, plugins: { legend: { display: false }, tooltip: { enabled: false } } };
+                    const axis = { x: { ticks: { color: '#6b7280' }, grid: { display: false } }, y: { ticks: { color: '#6b7280' }, grid: { color: '#e5e7eb' } } };
+                    this.charts.c1 = new Chart(document.getElementById('cKosten'), {
+                        type: 'bar',
+                        data: { labels: this.data.kosten5.map(k => k.name), datasets: [{ data: this.data.kosten5.map(k => k.wert), backgroundColor: this.data.kosten5.map(k => k.farbe), borderWidth: 0, borderRadius: 4 }] },
+                        options: { ...base, scales: axis, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + ' T€' } } } }
+                    });
+                    this.charts.c2 = new Chart(document.getElementById('cRoi'), {
+                        type: 'bar',
+                        data: { labels: this.data.roi3.map(r => r.kommune), datasets: [{ data: this.data.roi3.map(r => r.roi), backgroundColor: '#2563eb', borderWidth: 0, borderRadius: 4 }] },
+                        options: { ...base, scales: axis, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => 'ROI ' + c.parsed.y + ' %' } } } }
+                    });
+                    this.drawRueck(this.anteile);
+                },
+                drawRueck(a) {
+                    if (typeof Chart === 'undefined' || !document.getElementById('cRueck')) return;
+                    if (this.charts.c3) this.charts.c3.destroy();
+                    this.charts.c3 = new Chart(document.getElementById('cRueck'), {
+                        type: 'bar',
+                        data: { labels: ['Ohne KI (reaktiv)', 'Mit KI (vorausschauend)'], datasets: [{ data: [Math.round(a * 0.12), Math.round(a * 0.02)], backgroundColor: ['#ef4444', '#10b981'], borderWidth: 0, borderRadius: 4 }] },
+                        options: { responsive: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.parsed.y + ' Rückläufe/Jahr' } } }, scales: { x: { ticks: { color: '#6b7280' }, grid: { display: false } }, y: { beginAtZero: true, ticks: { color: '#6b7280' }, grid: { color: '#e5e7eb' } } } }
+                    });
+                }
+            };
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html>

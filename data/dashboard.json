@@ -1,0 +1,46 @@
+{
+  "kpis": [
+    { "wert": "60.000 €", "label": "6-Monats-Pilot inkl. Hardware & Schulung", "klasse": "blue" },
+    { "wert": "< 12 Monate", "label": "Amortisation (ab 150 Anträgen/Jahr)", "klasse": "green" },
+    { "wert": "~80/Jahr", "label": "Break-even ab", "klasse": "blue" },
+    { "wert": "207–515 %", "label": "ROI nach 3 Jahren (je Kommunengröße)", "klasse": "green" },
+    { "wert": "−75 %", "label": "Bearbeitungszeit durch Vorabprüfung", "klasse": "blue" },
+    { "wert": "−83 %", "label": "Rückläufe (12 → 2 pro 100 Anträge)", "klasse": "green" }
+  ],
+  "kosten5": [
+    { "name": "open-gov-automation", "wert": 130, "farbe": "#10b981", "hinweis": "Einmalige Investition + Wartung" },
+    { "name": "Gehostetes LLM", "wert": 500, "farbe": "#ef4444", "hinweis": "Laufende Lizenz- & Betriebskosten" },
+    { "name": "Individuelle SaaS", "wert": 500, "farbe": "#ef4444", "hinweis": "Laufende Plattformkosten" }
+  ],
+  "roi3": [
+    { "kommune": "Klein (≤ 25k Ew.)", "roi": 207 },
+    { "kommune": "Mittel (25–100k Ew.)", "roi": 340 },
+    { "kommune": "Groß (100k+ Ew.)", "roi": 515 }
+  ],
+  "vergleich": [
+    { "kriterium": "Datensouveränität", "kategorie": "Souveränität", "open": "100 %", "hosted": "0 %", "saas": "50–80 %", "o": "y", "h": "n", "s": "w" },
+    { "kriterium": "DSGVO-Konformität", "kategorie": "Souveränität", "open": "Voll", "hosted": "Eingeschränkt", "saas": "Abhängig", "o": "y", "h": "w", "s": "w" },
+    { "kriterium": "US-Cloud erforderlich", "kategorie": "Souveränität", "open": "Nein", "hosted": "Ja", "saas": "Meist", "o": "y", "h": "n", "s": "n" },
+    { "kriterium": "Lock-in-Risiko", "kategorie": "Souveränität", "open": "Keines", "hosted": "Hoch", "saas": "Hoch", "o": "y", "h": "n", "s": "n" },
+    { "kriterium": "Kosten über 5 Jahre", "kategorie": "Kosten", "open": "~130.000 €", "hosted": "~500.000 €", "saas": "~500.000 €", "o": "y", "h": "n", "s": "n" },
+    { "kriterium": "Laufende Lizenzgebühren", "kategorie": "Kosten", "open": "Keine", "hosted": "Hoch", "saas": "Hoch", "o": "y", "h": "n", "s": "n" },
+    { "kriterium": "Offener Quellcode (GPL-3.0)", "kategorie": "Betrieb", "open": "Ja", "hosted": "Nein", "saas": "Nein", "o": "y", "h": "n", "s": "n" },
+    { "kriterium": "Eigenbetrieb durch die Kommune", "kategorie": "Betrieb", "open": "Ja", "hosted": "Nein", "saas": "Nein", "o": "y", "h": "n", "s": "n" },
+    { "kriterium": "Daten lokal im Verwaltungsgebiet", "kategorie": "Betrieb", "open": "Ja", "hosted": "Selten", "saas": "Nein", "o": "y", "h": "n", "s": "n" }
+  ],
+  "aufstellung": [
+    { "name": "A · Lokal", "jeKommune": 60000, "kommunen": 1, "beschreibung": "2 Geräte im Rathaus — Pilot, schneller Start", "klasse": "blue" },
+    { "name": "B · Stadtweit dezentral", "jeKommune": 63000, "kommunen": 1, "beschreibung": "2. Standort — Resilienz gegen Gebäudeausfälle", "klasse": "blue" },
+    { "name": "C · Verbands-Betrieb", "jeKommune": 13000, "kommunen": 5, "beschreibung": "Eine Einheit im Landkreis, 5 Kommunen teilen sie", "klasse": "green" },
+    { "name": "D · Dienstleister-gehostet", "jeKommune": 72000, "kommunen": 1, "beschreibung": "Ausnahme — erfordert Auftragsverarbeitung", "klasse": "warn" }
+  ],
+  "model": {
+    "invest": 60000,
+    "kosten5": 130000,
+    "ersparnisJeAntrag": 400,
+    "defaultAntraege": 150,
+    "ruecklaufOhne": 0.12,
+    "ruecklaufMit": 0.02,
+    "einheit": "Modellannahmen auf Basis der Projektdaten (etwa: 5 Std. Bearbeitung à 100 €, vermiedene Rückläufe) — individuelle Kalkulation im Projekt."
+  }
+}
