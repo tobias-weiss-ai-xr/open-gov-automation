@@ -86,6 +86,8 @@ Verwaltungen arbeiten heute meist *reaktiv*:
 - [Pilotprojekt](examples/60k-mesh-cluster-projekt.md) – 6-Monats-Skizze für Bauanträge
 - [Wirtschaftlichkeit](examples/wirtschaftlichkeit.md) – ROI-Berechnung für verschiedene Szenarien
 - [Lösungsvergleich](examples/loesungsvergleich.md) – open-gov-automation vs. Cloud/SaaS
+- [Dezentraler Betrieb](examples/dezentraler-betrieb.md) – Aufstellungs-Varianten & Hebelwirkung
+- [Live-Demo](demo.html) – Interaktive Terminal-Simulation des Workflows
 - [Compliance](compliance/) – TOMs, VVT, DSFA (DSGVO-konform)
 - [Design Guide](DESIGN-GUIDE.md) – Visuelle Prinzipien
 

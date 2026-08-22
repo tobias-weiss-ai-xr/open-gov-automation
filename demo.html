@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live-Demo · open-gov-automation — Souveräne KI-Einheit</title>
+    <meta name="description" content="Interaktive Terminal-Demo: vorausschauende Bauantrags-Prüfung auf einer lokalen dual-cluster KI-Einheit (2× GX10). Failover, DSGVO, keine Cloud. Frontend-Simulation.">
+    <meta property="og:title" content="Live-Demo · open-gov-automation">
+    <meta property="og:description" content="Erleben Sie den Workflow: vorausschauende Prüfung, Failover der dual-cluster KI-Einheit, Hebel für Ihre Kommune.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tobias-weiss-ai-xr.github.io/open-gov-automation/demo.html">
+    <style>
+        /* DESIGN-GUIDE.md — Minimal. Stoisch. Unix-Philosophie. Terminal-Ansicht. */
+        :root {
+            --bg: #0a0f1a;
+            --bg-panel: #0e1524;
+            --border: #1f2a3d;
+            --text: #c9d1dc;
+            --dim: #5b6b82;
+            --ok: #10b981;
+            --warn: #f59e0b;
+            --err: #ef4444;
+            --accent: #2563eb;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--mono); background: var(--bg); color: var(--text); line-height: 1.55; font-size: 14px; }
+
+        .topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--bg-panel); position: sticky; top: 0; z-index: 5; }
+        .brand { color: var(--text); font-weight: 700; letter-spacing: .02em; }
+        .brand a { color: var(--text); text-decoration: none; }
+        .brand a:hover { color: var(--accent); }
+        .brand .mark { color: var(--ok); }
+        .leds { display: flex; gap: 18px; font-size: 12px; }
+        .led { display: inline-flex; align-items: center; gap: 6px; }
+        .led .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+        .led.ok .dot { background: var(--ok); box-shadow: 0 0 6px var(--ok); }
+        .led.down .dot { background: var(--err); box-shadow: 0 0 6px var(--err); }
+        .led .role { color: var(--dim); }
+
+        .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
+
+        .banner { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-panel); padding: 10px 14px; margin-bottom: 12px; font-size: 13px; }
+        .banner b { color: var(--text); }
+        .banner .hint { color: var(--dim); }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .chip { font-family: var(--mono); font-size: 12.5px; padding: 6px 12px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text); border-radius: 999px; cursor: pointer; }
+        .chip:hover { border-color: var(--accent); color: var(--accent); }
+        .chip:disabled { opacity: .4; cursor: not-allowed; }
+        .chip.primary { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,.08); }
+
+        .term { border: 1px solid var(--border); border-radius: 6px; background: #050810; overflow: hidden; display: flex; flex-direction: column; }
+        .term-title { display: flex; justify-content: space-between; align-items: center; padding: 6px 12px; border-bottom: 1px solid var(--border); color: var(--dim); font-size: 12px; background: var(--bg-panel); }
+        .term-title .idle { color: var(--ok); }
+        .out { height: 62vh; min-height: 380px; overflow-y: auto; padding: 12px 14px; }
+        .line { display: flex; gap: 10px; }
+        .line .ts { color: var(--dim); flex: 0 0 auto; user-select: none; }
+        .line .m { white-space: pre-wrap; word-break: break-word; }
+        .line.prompt .m { color: var(--accent); font-weight: 700; }
+        .line.ok .m { color: var(--ok); }
+        .line.warn .m { color: var(--warn); }
+        .line.err .m { color: var(--err); }
+        .line.dim .m { color: var(--dim); }
+        .line.accent .m { color: var(--accent); }
+        .inputrow { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); padding: 10px 14px; background: var(--bg-panel); }
+        .inputrow .prompt { color: var(--ok); font-weight: 700; }
+        .inputrow input { flex: 1; background: transparent; border: none; outline: none; color: var(--text); font-family: var(--mono); font-size: 14px; }
+
+        .chartbox { border: 1px solid var(--border); border-radius: 6px; margin-top: 12px; padding: 14px; background: var(--bg-panel); }
+        .chartbox h3 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+        .chartbox .cap { color: var(--dim); font-size: 12px; margin-top: 6px; }
+        [x-cloak] { display: none !important; }
+
+        footer { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; text-align: center; color: var(--dim); font-size: 12.5px; line-height: 1.7; }
+        footer a { color: var(--accent); }
+    </style>
+</head>
+<body x-data="term()" x-init="init()">
+
+    <header class="topbar">
+        <div class="brand"><span class="mark">▮</span> open-gov-automation · <a href="index.html">← zurück</a></div>
+        <div class="leds">
+            <span class="led" :class="aDown ? 'down' : 'ok'"><span class="dot"></span><span>A · <span class="role">Primary</span></span></span>
+            <span class="led" :class="bActive ? 'ok' : 'dim'"><span class="dot"></span><span>B · <span class="role">Replica</span></span></span>
+        </div>
+    </header>
+
+    <div class="wrap">
+        <div class="banner">
+            <b>Live-Demo (Simulation)</b> · Souveräne KI-Einheit — 2 lokal gekoppelte Geräte, keine Cloud.<br>
+            <span class="hint">Tippe einen Befehl oder klicke einen Chip. Frontend-Simulation — keine echte KI, keine echten Anträge.</span>
+        </div>
+
+        <div class="chips">
+            <button class="chip primary" @click="run('demo')" :disabled="busy">▶ Demo</button>
+            <button class="chip" @click="run('status')" :disabled="busy">status</button>
+            <button class="chip" @click="run('antrag anbau-gartenweg-3')" :disabled="busy">antrag anbau-gartenweg-3</button>
+            <button class="chip" @click="run('failover')" :disabled="busy">failover</button>
+            <button class="chip" @click="run('netz')" :disabled="busy">netz</button>
+            <button class="chip" @click="run('hilfe')" :disabled="busy">hilfe</button>
+        </div>
+
+        <main class="term" @click="$refs.inp.focus()">
+            <div class="term-title"><span>gov.ki — terminal</span><span class="idle" x-show="!busy">BEREIT</span><span class="idle" x-show="busy" style="color:var(--warn)">… läuft</span></div>
+            <div class="out" x-ref="out">
+                <template x-for="(l, i) in lines" :key="i">
+                    <div class="line" :class="l.c"><span class="ts" x-text="l.t"></span><span class="m" x-text="l.m"></span></div>
+                </template>
+            </div>
+            <div class="inputrow">
+                <span class="prompt">gov.ki&gt;</span>
+                <input x-ref="inp" x-model="cmd" @keydown.enter.prevent="enter()"
+                       @keydown.up.prevent="hist(true)" @keydown.down.prevent="hist(false)"
+                       autocomplete="off" spellcheck="false" autocapitalize="off" :disabled="busy">
+            </div>
+        </main>
+
+        <div class="chartbox" x-show="chartShown" x-cloak>
+            <h3>Rückläufe pro Jahr · 100 Anträge</h3>
+            <canvas id="roiChart" width="720" height="220" style="width:100%;height:auto;"></canvas>
+            <div class="cap">Angaben aus der Wirtschaftlichkeitsanalyse (Modellannahmen). Simulation zu Demonstrationszwecken.</div>
+        </div>
+
+        <footer>
+            Frontend-Simulation zu Demonstrationszwecken — keine Verarbeitung personenbezogener Daten, keine echten Bescheide.<br>
+            Die KI liefert unterstützende Auskunft; die Entscheidung trifft die Behörde (Mensch). · <a href="index.html">Startseite</a> ·
+            <a href="https://github.com/tobias-weiss-ai-xr/open-gov-automation">GitHub</a> · Open Source (GPL-3.0)
+        </footer>
+    </div>
+
+    <script>
+        /* ---------- Datenmodell: Prüffälle (Simulation) ---------- */
+        const APPS = {
+            "wohnhaus-sonnenweg-12": {
+                plan: "Einfamilienhaus, 5,8 m Firsthöhe, GRZ 0,35 / GFZ 0,5",
+                checks: [
+                    ["Einfügen in Umgebung (§ 34 BauGB)", "bestanden", "ok"],
+                    ["Abstandsfläche (§ 6 HBO)",         "bestanden (mind. 3,00 m)", "ok"],
+                    ["GRZ / GFZ (Bebauungsplan)",        "bestanden (0,35 / 0,5)", "ok"],
+                    ["Nutzungsart (BauNVO § 4)",         "bestanden (reines Wohnen)", "ok"]
+                ],
+                verdict: "KEINE BEFUNDE — einreichbar (0 Rückläufe erwartet)",
+                verdictCls: "ok"
+            },
+            "anbau-gartenweg-3": {
+                plan: "Anbau 5,8 m Höhe, Abstand zur Grenze 2,40 m",
+                checks: [
+                    ["Einfügen in Umgebung (§ 34 BauGB)", "bestanden", "ok"],
+                    ["Abstandsfläche (§ 6 HBO) Länge",    "2,40 m < 3,00 m erforderlich", "warn"],
+                    ["Abstandsfläche (§ 6 HBO) Höhenverhältnis", "5,8 m > 0,8 × Abstand", "warn"],
+                    ["GRZ / GFZ (Bebauungsplan)", "bestanden (0,38 / 0,6)", "ok"],
+                    ["Nutzungsart (BauNVO § 4)", "bestanden", "ok"]
+                ],
+                verdict: "2 BEFUNDE vor Einreichung erkannt — Empfehlung: Anbau um 0,60 m zurücksetzen",
+                verdictCls: "warn"
+            },
+            "werkstatt-hauptstrasse-5": {
+                plan: "Handwerksbetrieb (Werkstatt) im Wohngebiet",
+                checks: [
+                    ["Einfügen in Umgebung (§ 34 BauGB)", "bestanden", "ok"],
+                    ["Abstandsfläche (§ 6 HBO)", "bestanden (4,20 m)", "ok"],
+                    ["GRZ / GFZ (Bebauungsplan)", "bestanden (0,2 / 0,4)", "ok"],
+                    ["Nutzungsart (BauNVO § 3)", "Werkstatt im reinen Wohngebiet nicht allgemein zulässig", "err"]
+                ],
+                verdict: "1 KONFLIKT: Standortwechsel in Mischgebiet (MI) oder Ausnahmeprüfung — vor Einreichung klären",
+                verdictCls: "err"
+            },
+            "mehrfamilienhaus-kirchplatz-1": {
+                plan: "MFH 4 Geschosse, GFZ 1,6 auf 900 m² Grundstück",
+                checks: [
+                    ["Einfügen in Umgebung (§ 34 BauGB)", "bestanden", "ok"],
+                    ["Abstandsfläche (§ 6 HBO)", "bestanden (4,10 m)", "ok"],
+                    ["GRZ (Bebauungsplan)", "geplant 0,42 · zulässig 0,4", "warn"],
+                    ["GFZ (Bebauungsplan)", "geplant 1,6 · zulässig 1,2", "err"],
+                    ["Nutzungsart (BauNVO)", "bestanden", "ok"]
+                ],
+                verdict: "DICHTE-KONFLIKT: ein Geschoss reduzieren oder Grundstückszuschnitt prüfen",
+                verdictCls: "err"
+            }
+        };
+
+        /* ---------- Alpine: Terminal-Zustand ---------- */
+        function term() {
+            return {
+                lines: [], cmd: '', hist: [], hi: -1, busy: false,
+                aDown: false, bActive: false, chartShown: false, chartDrawn: false, timers: [],
+
+                init() { this.say([["open-gov-automation v0.6 · Souveräne KI-Einheit", "accent"],
+                                  ["POST /boot …", "dim"]], 0);
+                    setTimeout(() => this.bootLines(), 220); },
+
+                now() { return new Date().toTimeString().slice(0, 8); },
+                add(m, c) { this.lines.push({ t: this.now(), m: m, c: c || "" }); this.$nextTick(() => { let o = this.$refs.out; if (o) o.scrollTop = o.scrollHeight; }); },
+                clear() { this.lines = []; },
+                say(seq, delay) { /* seq: [[text, class], ...] schrittweise */
+                    let t = delay || 0;
+                    seq.forEach(([m, c]) => { this.timers.push(setTimeout(() => this.add(m, c), t)); t += 55 + Math.min(m.length * 4, 140); });
+                },
+
+                bootLines() {
+                    this.say([
+                        ["Gerät A (Primary) ......... OK · GB10 · 128 GB · 1 TB SSD", "ok"],
+                        ["Gerät B (Replica) ......... OK · verbunden über 200 Gb/s Direktlink", "ok"],
+                        ["Replikation ............... aktiv · async · delta < 2 s", "ok"],
+                        ["Modul: Bauanträge (vorausschauend) .... geladen · v0.6", "ok"],
+                        ["Externe Abhängigkeiten ..... keine · keine Cloud · 0 Verbindungen nach außen", "ok"],
+                        ["KI-Einheit bereit. 2/2 Geräte.", "ok"],
+                        ["Tippe 'hilfe' für alle Befehle oder 'demo' für die geführte Vorführung.", "dim"]
+                    ]);
+                },
+
+                enter() {
+                    let c = this.cmd.trim(); if (!c || this.busy) return;
+                    this.hist.unshift(c); this.hi = -1; this.cmd = "";
+                    this.add("> " + c, "prompt");
+                    this.run(c);
+                },
+                hist(dir) {
+                    if (!this.hist.length) return;
+                    this.hi = dir ? this.hi + 1 : this.hi - 1;
+                    if (this.hi < 0) { this.hi = -1; this.cmd = ""; }
+                    else if (this.hi >= this.hist.length) { this.hi = this.hist.length - 1; }
+                    else this.cmd = this.hist[this.hi];
+                },
+
+                run(c) {
+                    let arg = c.toLowerCase();
+                    if (arg === "hilfe") return this.cmdHelp();
+                    if (arg === "status") return this.cmdStatus();
+                    if (arg === "netz") return this.cmdNetz();
+                    if (arg === "info") return this.cmdInfo();
+                    if (arg === "failover") return this.cmdFailover(true);
+                    if (arg === "demo") return this.cmdDemo();
+                    if (arg === "reset") { this.clear(); this.aDown = false; this.bActive = false; this.chartShown = false; return; }
+                    if (arg.startsWith("antrag")) return this.cmdAntrag(arg);
+                    this.say([["unbekannter Befehl: '" + c + "' — 'hilfe' zeigt alle Befehle.", "err"]]);
+                },
+
+                cmdHelp() {
+                    this.say([
+                        ["BEFEHLE", "accent"],
+                        ["  demo            geführte Vorführung des Workflows (empfohlen)", ""],
+                        ["  status          Status der dual-cluster Einheit (2 Geräte)", ""],
+                        ["  antrag <fall>   vorausschauende Prüfung eines Bauvorhabens", ""],
+                        ["  failover        Ausfall Gerät A simulieren, B übernimmt", ""],
+                        ["  netz            Verbindung & Replikation anzeigen", ""],
+                        ["  info            Hinweise zu dieser Simulation", ""],
+                        ["  reset           Eingabe löschen", ""],
+                        ["VERFÜGBARE PRÜFFÄLLE", "accent"],
+                        ["  wohnhaus-sonnenweg-12     einreichbar, 0 Befunde", ""],
+                        ["  anbau-gartenweg-3         Abstandsfläche unterschritten (2 Befunde)", ""],
+                        ["  werkstatt-hauptstrasse-5  Nutzungskonflikt (BauNVO)", ""],
+                        ["  mehrfamilienhaus-kirchplatz-1  Dichte zu hoch (GFZ)", ""]
+                    ]);
+                },
+
+                cmdStatus() {
+                    this.say([
+                        ["KI-Einheit .............. BEREIT (2/2 Geräte)", this.aDown ? "warn" : "ok"],
+                        ["  A (Primary) ........... OK · Load 41 %", this.aDown ? "err" : "ok"],
+                        ["  B (Replica) ........... repliziert · delta 1,8 s", "ok"],
+                        ["Verbindung .............. 200 Gb/s Direktlink · gebondet · stabil", "ok"],
+                        ["Modul Bauanträge ........ geladen · vorausschauend · v0.6", "ok"],
+                        ["Externe Abhängigkeiten .. keine · keine Cloud", "ok"]
+                    ]);
+                },
+
+                cmdNetz() {
+                    this.say([
+                        ["DIREKTLINK A↔B ............... 200 Gb/s (gebondet)", "ok"],
+                        ["  Latenz ..................... 0,3 ms", ""],
+                        ["  Replikation ................ async · RPO < 2 s · RTO < 30 s", ""],
+                        ["  Verschlüsselung ............ intern (eigene Schlüssel, TLS 1.3)", ""],
+                        ["  Externe Verbindungen ....... 0 · kein Telemetrie, kein Update-Zwang", "ok"]
+                    ]);
+                },
+
+                cmdInfo() {
+                    this.say([
+                        ["DIES IST EINE FRONTEND-SIMULATION.", "warn"],
+                        ["  Keine echte KI · keine echten Anträge · keine personenbezogenen Daten.", ""],
+                        ["  In der realen Lösung prüft die lokale KI-Einheit gegen HBO Hessen, BauNVO", ""],
+                        ["  und Bebauungsplan — als unterstützende Auskunft. Die Behörde entscheidet.", ""],
+                        ["  Hardware: 2× ASUS GX10, gekoppelt, 100 % souverän (Details: Projekt-Skizze).", "dim"]
+                    ]);
+                },
+
+                cmdAntrag(arg) {
+                    let name = arg.replace(/^antrag\s*/, "");
+                    if (!name || !APPS[name]) {
+                        this.say([["Verfügbare Fälle: " + Object.keys(APPS).join(" · "), "dim"],
+                                  ["Aufruf: 'antrag <fall>' — z. B. 'antrag anbau-gartenweg-3'.", "dim"]]);
+                        return;
+                    }
+                    let app = APPS[name];
+                    this.busy = true;
+                    let seq = [
+                        ["Lesen der Planung .......... " + app.plan, "dim"],
+                        ["Prüf-Cache ................. warm · delta 1,4 s", "dim"],
+                        ["Verteilt auf 2 Geräte ...... A: Analyse · B: Validierung", "dim"],
+                        ["— Prüfprotokoll (HBO Hessen, Bebauungsplan, BauNVO) —", "accent"]
+                    ];
+                    app.checks.forEach(([k, v, cls]) => seq.push([(cls === "ok" ? "[ OK ] " : cls === "warn" ? "[WARN] " : "[KRIT] ") + k + " · " + v, cls]));
+                    seq.push([app.verdict, app.verdictCls]);
+                    seq.push(["→ Vorausschauend geprüft: Konflikte vor Einreichung behoben, statt nach Ablehnung.", "ok"],
+                             ["→ Ohne Prüfung: +1 Rücklauf · ø 6 Wochen Durchlaufzeit.", "dim"]);
+                    this.say(seq, 60);
+                    this.timers.push(setTimeout(() => { this.busy = false; }, 60 + seq.length * 150));
+                },
+
+                cmdFailover(auto) {
+                    this.busy = true; this.aDown = true; this.bActive = true;
+                    this.say([
+                        ["Simuliere Ausfall von Gerät A … (Szenario: Störung im Rathaus)", "warn"]
+                    ], 0);
+                    this.timers.push(setTimeout(() => {
+                        this.add("[ 0,0 s] A: Heartbeat verloren · letzter Replikationsstand −1,8 s", "warn");
+                        this.timers.push(setTimeout(() => {
+                            this.add("[ 2,1 s] B: übernimmt aktive Rolle · Quorum 1/2 · kein Datenverlust", "ok");
+                            this.add("[ 04s] B: Dienste werden übernommen  [....   ]", "ok");
+                            let line = this.lines[this.lines.length - 1], s = 4, iv = setInterval(() => {
+                                s = Math.min(s + 3, 30);
+                                let p = Math.round((s / 30) * 7);
+                                line.m = "[ " + String(s).padStart(2, "0") + "s] B: Dienste werden übernommen  [" + "▓".repeat(p) + " ".repeat(7 - p) + "]";
+                                this.$nextTick(() => { let o = this.$refs.out; if (o) o.scrollTop = o.scrollHeight; });
+                                if (s >= 30) {
+                                    clearInterval(iv);
+                                    this.add("[27,4 s] B: Dienste vollständig übernommen · Sessions fortgesetzt", "ok");
+                                    this.add("→ SLA: Failover in 27 s (< 30 s Ziel) · Bürger merken nichts.", "ok");
+                                    this.timers.push(setTimeout(() => {
+                                        this.add("[+90 s] A: wiederverbunden · Delta-Abgleich (1,8 s) repliziert", "ok");
+                                        this.add("→ Einheit vollständig: 2/2 Geräte · Bereit.", "ok");
+                                        this.aDown = false;
+                                        this.busy = false;
+                                        if (!auto) this.say([["Tippe 'demo' für die komplette Vorführung.", "dim"]], 400);
+                                        else this.failoverNext();
+                                    }, 1400));
+                                }
+                            }, 90);
+                            this.timers.push(iv);
+                        }, 900));
+                    }, 700));
+                },
+
+                failoverNext() {
+                    this.add("— Zusammenfassung des Workflows —", "accent");
+                    this.say([
+                        ["Prüfung VOR Einreichung ......... Rückläufe −83 %", "ok"],
+                        ["2/2 Geräte = gesamte Infrastruktur .. Ausfall überbrückt in 27 s", "ok"],
+                        ["0 externe Abhängigkeiten ........... keine Cloud · DSGVO-by-Design", "ok"],
+                        ["Kosten werden durch Automatisierung getragen — unter 12 Monaten amortisiert.", "dim"]
+                    ], 300);
+                    this.drawChart();
+                    this.chartShown = true;
+                    this.say([["→ Interessiert? Kommune werden: open-gov-automation@graphwiz.ai", "accent"]], 800);
+                },
+
+                cmdDemo() {
+                    if (this.busy) return;
+                    this.clear(); this.aDown = false; this.bActive = false;
+                    this.add("> demo", "prompt");
+                    this.busy = true;
+                    this.say([
+                        ["— Geführte Vorführung: Wie arbeitet die KI-Einheit? —", "accent"],
+                        ["Schritt 1/5  Boot — 2 Geräte, 0 Abhängigkeiten"],
+                        ["Schritt 2/5  Status der Einheit"],
+                        ["Schritt 3/5  Vorausschauende Prüfung — Bauantrag VOR Einreichung"],
+                        ["Schritt 4/5  Failover — Gerät A fällt aus, B übernimmt"],
+                        ["Schritt 5/5  Hebel für Ihre Kommune"],
+                        ["(läuft automatisch …)", "dim"]
+                    ], 120);
+                    let t = 1200;
+                    this.timers.push(setTimeout(() => this.bootLines(), t));
+                    this.timers.push(setTimeout(() => { this.cmdStatus(); }, t + 2400));
+                    this.timers.push(setTimeout(() => this.cmdAntrag("antrag anbau-gartenweg-3"), t + 4700));
+                    this.timers.push(setTimeout(() => this.cmdFailover(true), t + 8800));
+                },
+
+                drawChart() {
+                    if (this.chartDrawn || typeof Chart === "undefined") return;
+                    this.chartDrawn = true;
+                    new Chart(document.getElementById("roiChart"), {
+                        type: "bar",
+                        data: {
+                            labels: ["Ohne KI (reaktiv)", "Mit KI (vorausschauend)"],
+                            datasets: [{
+                                data: [12, 2],
+                                backgroundColor: ["#ef4444", "#10b981"],
+                                borderWidth: 0, borderRadius: 3
+                            }]
+                        },
+                        options: {
+                            responsive: false,
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: { enabled: false }
+                            },
+                            scales: {
+                                x: { ticks: { color: "#5b6b82" }, grid: { display: false } },
+                                y: { beginAtZero: true, max: 14, ticks: { color: "#5b6b82", stepSize: 2 }, grid: { color: "#1f2a3d" } }
+                            }
+                        }
+                    });
+                }
+            };
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html>
