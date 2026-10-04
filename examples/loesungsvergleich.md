@@ -130,6 +130,33 @@
 
 ---
 
+## 🧩 Warum es kein One-Size-Fits-All gibt (Organisationen ab ~500 Nutzern)
+
+Standard-Suiten versprechen Standardisierung. Ab einer gewissen Größe wird genau
+das zum Problem — nicht, weil die Software schlecht wäre, sondern weil sich
+Organisationen in der öffentlichen Verwaltung **gesetzlich unterscheiden müssen**:
+
+| Dimension | Warum sie sich je Organisation unterscheidet | Konsequenz für die Software |
+|----------|----------------------------------------------|------------------------------|
+| **Rechtsrahmen** | Landesrecht, Kommunalverfassung, Satzungen, Zuständigkeitsordnungen — je Bundesland und Gebietskörperschaft anders | Prüfregeln, Fristen und Zuständigkeiten lassen sich nicht zentral vorkonfektionieren |
+| **Aufbau- & Ablauforganisation** | Dienstwege, Ressortgrenzen, Vertretungsregeln, historisch gewachsene Zuständigkeiten | Prozesse müssen der Organisationsstruktur folgen — nicht umgekehrt |
+| **Bestands-IT** | Fachverfahren, Portalverbund, Register, Schnittstellen | Eine Suite, die alles ersetzen will, scheitert an der Migration; Module, die integrieren, schaffen sofort Wert |
+| **Datenschutz & Compliance** | VVT, DSFA und TOMs je Stelle und Verarbeitungszweck; Auftragsverarbeitung | Rechtssicherheit entsteht durch Anpassung an die eigene Verarbeitung, nicht durch allgemeine AGB |
+
+**Deshalb: individuelle Module statt monolithischer Suite.** Offener Quellcode
+(GPL-3.0) macht Individualisierung überhaupt erst praktikabel: Prüfregeln,
+Fristen, Zuständigkeiten und Schnittstellen werden pro Organisation konfiguriert —
+bei Eigenbetrieb, ohne Vendor-Lock-in und ohne dass jede Gesetzesänderung einen
+Lieferantenvertrag braucht. Eine Suite kann das nur über teure Customizing-Projekte;
+wir bauen die Anpassbarkeit direkt ein.
+
+> **Faustregel:** Unter ~500 Nutzern deckt eine Standardlösung den Großteil ab.
+> Darüber übersteigen die organisatorischen und rechtlichen Unterschiede jede
+> Schablone — dort gewinnt, wer Module an die Verwaltung anpasst statt die
+> Verwaltung an die Suite.
+
+---
+
 ## 🎓 Schulungskonzept: Vom Verwaltungsangestellten zum KI-Operator
 
 ### **Ziel:** Kompetenzaufbau für souveränen Betrieb
