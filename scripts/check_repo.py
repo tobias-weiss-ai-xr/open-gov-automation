@@ -18,6 +18,7 @@ FORBIDDEN = [
     "MANIFEST.md", "ADMIN-VALUES.md", "verwaltung-2.0",
     "bauantraege-monte-carlo", "nutzen-roi-analyse",
     "poc-dual-spark", "foerdermittel-module",
+    "hello-gov",
     "Beispiel", "beispiel",
 ]
 ERRORS = []

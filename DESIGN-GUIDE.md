@@ -76,7 +76,7 @@ font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 ### 6. **Layout**
 
-- **Maximale Breite:** 800px (Lesbarkeit)
+- **Maximale Breite:** 880px (Lesbarkeit)
 - **Ränder:** 24px (Mobile), 48px (Desktop)
 - **Single Column** für Dokumentation
 - **Zwei Spalten** nur für Vergleiche (z. B. Lösungsvergleich)
@@ -135,7 +135,7 @@ font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 ## 🎨 Farbpaletten
 
-### 1. **Hauptseiten (hello-gov-automation.html)**
+### 1. **Hauptseiten (index.html)**
 - Hintergrund: `#ffffff`
 - Text: `#111827`
 - Akzente: `#2563eb`
@@ -235,8 +235,8 @@ th { background: #f9fafb; }
 
 ## 📚 Inspiration
 
-- [Dieter Rams — 10 Prinzipien guten Designs](https://www.vitsoe.com/de/ueber-vits/o/design-prinzipien)
-- [IBM Design Language](https://www.carbonDesignsystem.com/)
+- [Dieter Rams — 10 Prinzipien guten Designs](https://www.vitsoe.com/de/ueber-vitsoe/design-prinzipien)
+- [IBM Carbon Design System](https://www.carbondesignsystem.com/)
 - [Google Material Design — Minimal](https://m3.material.io/)
 
 ---
