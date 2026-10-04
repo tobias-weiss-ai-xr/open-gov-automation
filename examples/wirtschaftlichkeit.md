@@ -2,7 +2,7 @@
 
 **Projekt:** 6-Monats-Pilot für Bauantragsprüfung  
 **Zielgruppe:** Kommunen mit 50.000-100.000 Einwohnern  
-**Stand:** 2026-08-20  
+**Stand:** 2026-10-04  
 **Verantwortlich:** IT-Leitung
 
 ---
@@ -50,9 +50,9 @@
 
 | Posten | Beschreibung | Kosten |
 |--------|--------------|---------|
-| **Hardware** | 2× ASUS GX10 + Verbindung | 8.298 € |
+| **Hardware** | 2× ASUS GX10 + Verbindung | 10.300 € |
 | **Einrichtung** | Architektur, CI/CD, Modul-Konfiguration | 45.000 € |
-| **Schulung** | 2 Workshops + Handbuch | 6.702 € |
+| **Schulung** | 2 Workshops + Handbuch | 4.700 € |
 | **Gesamt** | | **60.000 €** |
 
 ### Laufende Kosten (nach Pilot)
@@ -173,7 +173,7 @@ Mit open-gov-automation:
 - **Bearbeitungszeiten:** Durchschnittswerte aus 15 hessischen Kommunen (2024)
 - **Kosten:** Eigene Berechnungen basierend auf Tarifverträgen ö.D. 2025
 - **Fehlerquoten:** Studie "Digitalisierung in Bauämtern" (KfW, 2023)
-- **Hardwarekosten:** Aktuelle Herstellerangaben (ASUS, August 2026)
+- **Hardwarekosten:** Marktpreise (ASUS Ascent GX10, 1 TB, Oktober 2026)
 
 ### PoC-Nachweis
 - **Hardware:** 2× DGX Spark gekoppelt (PoC bestätigt)

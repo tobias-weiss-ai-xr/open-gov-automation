@@ -132,9 +132,9 @@ schneller, je mehr Anträge durchlaufen.
 
 | Posten | Betrag |
 |--------|--------|
-| Hardware (2× GX10 + Verbindung) | 8.298 € |
+| Hardware (2× GX10 + Verbindung) | 10.300 € |
 | Expertise (Architektur, Aufbau, CI/CD, Module) | 45.000 € |
-| Schulung der KI-Operatoren | 6.702 € |
+| Schulung der KI-Operatoren | 4.700 € |
 | **Summe** | **60.000 €** |
 | **Amortisation** | **< 12 Monate** (150+ Anträge/Jahr, Break-even ~80/Jahr) |
 
@@ -142,9 +142,9 @@ schneller, je mehr Anträge durchlaufen.
 
 | Posten | Betrag | Anmerkung |
 |--------|--------|-----------|
-| Hardware (1 dual cluster) | 8.298 € | eine Anschaffung statt fünf |
+| Hardware (1 dual cluster) | 10.300 € | eine Anschaffung statt fünf |
 | Expertise (einmalig, wiederverwendet) | 45.000 € | identische Module, N Kommunen |
-| Gemeinsame Schulung & Betrieb | 11.702 € | Pool statt Einzelbetreuung |
+| Gemeinsame Schulung & Betrieb | 9.700 € | Pool statt Einzelbetreuung |
 | **Summe** | **65.000 €** | |
 | **je Kommune** | **~13.000 €** | statt 60.000 € → **−78 %** |
 | 6. Kommune tritt bei | +3.000 € | → je Kommune ~11.400 € |

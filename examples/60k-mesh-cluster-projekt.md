@@ -29,10 +29,10 @@ Keine USV, kein NAS, keine Cloud: Die zwei Geräte bilden die gesamte Infrastruk
 
 | Position | Spezifikation | Stückpreis | Summe |
 |----------|---------------|-----------|-------|
-| Gerät A (Primary) | ASUS Ascent GX10 — Nvidia GB10, 128 GB, 1 TB SSD | 3.999 € | 3.999 € |
-| Gerät B (Replica) | ASUS Ascent GX10 — Nvidia GB10, 128 GB, 1 TB SSD | 3.999 € | 3.999 € |
+| Gerät A (Primary) | ASUS Ascent GX10 — Nvidia GB10, 128 GB, 1 TB SSD | 5.000 € | 5.000 € |
+| Gerät B (Replica) | ASUS Ascent GX10 — Nvidia GB10, 128 GB, 1 TB SSD | 5.000 € | 5.000 € |
 | Verbindung | 2× 200 Gb/s Direktlink, gebondet (400 Gbps) | 150 € | 300 € |
-| **Hardware gesamt** | | | **8.298 €** |
+| **Hardware gesamt** | | | **10.300 €** |
 
 **Lokale Einheit ohne Abhängigkeiten:** Keine USV, kein NAS, keine externe Datenbank
 oder Cloud. Die zwei Geräte sind über die 200Gb/s-Verbindung **gekoppelt** und bilden
@@ -48,9 +48,9 @@ ein Modell lokal – ohne Cloud. (Quelle: graphwiz.ai, 2026).
 
 | Posten | Beschreibung | Kosten |
 |--------|-------------|--------|
-| Hardware | 2× GX10 + 2× 200Gb/s-Kabel | 8.298 € |
+| Hardware | 2× GX10 + 2× 200Gb/s-Kabel | 10.300 € |
 | Expertise | Architektur, Einrichtung, CI/CD, Modul-Konfiguration, Bereitstellung | 45.000 € |
-| Schulung der KI-Operatoren | 2 Workshops + Handbuch + praktische Übungen | 6.702 € |
+| Schulung der KI-Operatoren | 2 Workshops + Handbuch + praktische Übungen | 4.700 € |
 | **Gesamt** | | **60.000 €** |
 
 **Grundsatz:** Kein Blackbox-Produkt mit Wartungsvertrag, sondern

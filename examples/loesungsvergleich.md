@@ -1,7 +1,7 @@
 # Lösungsvergleich: open-gov-automation vs. Alternativen
 
 **Vergleichende Kosten- und Nutzenanalyse für Kommunen**  
-**Stand:** 2026-08-20  
+**Stand:** 2026-10-04  
 **Ziel:** Objektive Entscheidungsgrundlage für Digitalisierungsstrategie
 
 ---
@@ -220,14 +220,14 @@ Monat 5-6: Eigenständiger Betrieb
 
 | Posten | Jahr 1 | Jahr 2+ | Gesamt (5 Jahre) |
 |--------|--------|---------|-------------------|
-| **Schulungskosten** | 6.702 € | 0 € | 6.702 € |
+| **Schulungskosten** | 4.700 € | 0 € | 4.700 € |
 | **Personalkosten (5 MA)** | 120.000 € | 120.000 € | 600.000 € |
-| **Hardware/Wartung** | 8.298 € | 2.000 € | 14.298 € |
+| **Hardware/Wartung** | 10.300 € | 2.000 € | 16.300 € |
 | **Externe Dienstleister** | 0 € | 0 € | 0 € |
-| **Gesamtkosten** | **135.000 €** | **122.000 €** | **620.900 €** |
+| **Gesamtkosten** | **135.000 €** | **122.000 €** | **621.000 €** |
 | **Produktivität** | 75% | 100% | - |
 | **Einsparungen** | 61.500 € | 123.000 € | 490.500 € |
-| **Nettokosten** | **73.500 €** | **-1.000 €** | **130.400 €** |
+| **Nettokosten** | **73.500 €** | **-1.000 €** | **130.500 €** |
 
 ### **Option B: Externe Dienstleister (SaaS/Gehostet)**
 
