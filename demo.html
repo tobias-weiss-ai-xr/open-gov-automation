@@ -187,7 +187,7 @@
                 lines: [], cmd: '', cmdHist: [], hi: -1, busy: false,
                 aDown: false, bActive: false, chartShown: false, chartDrawn: false, timers: [], demoDone: false,
 
-                init() { this.say([["open-gov-automation v0.6 · Souveräne KI-Einheit", "accent"],
+                init() { this.say([["open-gov-automation v0.7 · Souveräne KI-Einheit", "accent"],
                                   ["POST /boot …", "dim"]], 0);
                     setTimeout(() => this.bootLines(), 220);
                     if (new URLSearchParams(location.search).get("auto") === "1") {
@@ -207,7 +207,7 @@
                         ["Gerät A (Primary) ......... OK · GB10 · 128 GB · 1 TB SSD", "ok"],
                         ["Gerät B (Replica) ......... OK · verbunden über 200 Gb/s Direktlink", "ok"],
                         ["Replikation ............... aktiv · async · delta < 2 s", "ok"],
-                        ["Modul: Bauanträge (vorausschauend) .... geladen · v0.6", "ok"],
+                        ["Modul: Bauanträge (vorausschauend) .... geladen · v0.7", "ok"],
                         ["Externe Abhängigkeiten ..... keine · keine Cloud · 0 Verbindungen nach außen", "ok"],
                         ["KI-Einheit bereit. 2/2 Geräte.", "ok"],
                         ["Tippe 'hilfe' für alle Befehle oder 'demo' für die geführte Vorführung.", "dim"]
@@ -265,7 +265,7 @@
                         ["  A (Primary) ........... OK · Load 41 %", this.aDown ? "err" : "ok"],
                         ["  B (Replica) ........... repliziert · delta 1,8 s", "ok"],
                         ["Verbindung .............. 200 Gb/s Direktlink · gebondet · stabil", "ok"],
-                        ["Modul Bauanträge ........ geladen · vorausschauend · v0.6", "ok"],
+                        ["Modul Bauanträge ........ geladen · vorausschauend · v0.7", "ok"],
                         ["Externe Abhängigkeiten .. keine · keine Cloud", "ok"]
                     ]);
                 },
@@ -368,7 +368,7 @@
                     this.busy = true;
                     this.say([
                         ["— Geführte Vorführung: Wie arbeitet die KI-Einheit? —", "accent"],
-                        ["open-gov-automation v0.6 · POST /boot", "dim"],
+                        ["open-gov-automation v0.7 · POST /boot", "dim"],
                         ["Schritt 1/5  Boot — 2 Geräte, 0 Abhängigkeiten"],
                         ["Schritt 2/5  Status der Einheit"],
                         ["Schritt 3/5  Vorausschauende Prüfung — Bauantrag VOR Einreichung"],
