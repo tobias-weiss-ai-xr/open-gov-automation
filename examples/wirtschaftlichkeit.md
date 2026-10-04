@@ -11,8 +11,8 @@
 
 | Kennzahl | Aktuell (manuell) | Mit open-gov-automation | Verbesserung |
 |----------|---------------------|-------------------------|--------------|
-| **Bearbeitungszeit pro Antrag** | 4 Wochen | 8-10 Tage | **-75%** |
-| **Fehlerquote (Rückläufe)** | 30% | <5% | **-25%** |
+| **Bearbeitungszeit pro Antrag** | 4 Wochen | ~1 Woche | **-75%** |
+| **Fehlerquote (Rückläufe)** | 30% | <5% | **-83%** |
 | **Kosten pro Antrag** | ~500 € | ~125 € | **-75%** |
 | **Bürgerzufriedenheit** | 60% | 90%+ | **+30%** |
 
