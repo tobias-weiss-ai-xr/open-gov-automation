@@ -13,7 +13,7 @@
 | **Bereitstellung** | On-Premise (lokal) | Cloud (extern) | Cloud/On-Premise |
 | **Datensouveränität** | ✅ 100% | ❌ 0% | ⚠️ 50-80% |
 | **Anpassbarkeit** | ✅ Voll (Open Source) | ❌ Begrenzt | ⚠️ Eingeschränkt |
-| **Kosten (Jahr 1-3)** | 60.000 € (einmalig) + 2.000 €/Jahr | 15.000-50.000 €/Jahr | 100.000-300.000 € |
+| **Kosten (Jahr 1-3)** | 65.000 € (einmalig) + 2.000 €/Jahr | 15.000-50.000 €/Jahr | 100.000-300.000 € |
 | **Kosten (Jahr 4+)** | 2.000 €/Jahr | 15.000-50.000 €/Jahr | 20.000-100.000 €/Jahr |
 | **Lock-in-Risiko** | ❌ Keines | ✅ Hoch | ✅ Hoch |
 | **DSGVO-Konformität** | ✅ Voll | ⚠️ Eingeschränkt | ⚠️ Abhängig von Anbieter |
@@ -31,11 +31,11 @@
 
 | Jahr | Investition | Laufende Kosten | Kumulativ | Einsparung vs. manuell |
 |------|-------------|------------------|-----------|-------------------------|
-| 1 | 60.000 € | 2.000 € | -58.000 € | +61.500 € |
-| 2 | 0 € | 2.000 € | -56.000 € | +123.000 € |
-| 3 | 0 € | 2.000 € | -54.000 € | +184.500 € |
-| 4 | 0 € | 2.000 € | -52.000 € | +246.000 € |
-| 5 | 0 € | 2.000 € | -50.000 € | +307.500 € |
+| 1 | 65.000 € | 2.000 € | -63.000 € | +61.500 € |
+| 2 | 0 € | 2.000 € | -61.000 € | +123.000 € |
+| 3 | 0 € | 2.000 € | -59.000 € | +184.500 € |
+| 4 | 0 € | 2.000 € | -57.000 € | +246.000 € |
+| 5 | 0 € | 2.000 € | -55.000 € | +307.500 € |
 
 **Total nach 5 Jahren:** **+257.500 €** (gegenüber manuell)
 
@@ -47,7 +47,7 @@
 ✅ **Zukunftssicher** – Skalierbar für weitere Module (Fördermittel, Soziales, etc.)
 
 #### **Nachteile**
-⚠️ **Anfangsinvestition erforderlich** – 60.000 € für Pilot  
+⚠️ **Anfangsinvestition erforderlich** – 65.000 € für Pilot  
 ⚠️ **Eigene IT-Infrastruktur nötig** – 2× Server, Platz im Rathaus  
 ⚠️ **Schulungsaufwand** – Mitarbeiter müssen zu KI-Operatoren ausgebildet werden
 
@@ -220,14 +220,14 @@ Monat 5-6: Eigenständiger Betrieb
 
 | Posten | Jahr 1 | Jahr 2+ | Gesamt (5 Jahre) |
 |--------|--------|---------|-------------------|
-| **Schulungskosten** | 4.700 € | 0 € | 4.700 € |
+| **Schulungskosten** | 9.700 € | 0 € | 9.700 € |
 | **Personalkosten (5 MA)** | 120.000 € | 120.000 € | 600.000 € |
 | **Hardware/Wartung** | 10.300 € | 2.000 € | 16.300 € |
 | **Externe Dienstleister** | 0 € | 0 € | 0 € |
-| **Gesamtkosten** | **135.000 €** | **122.000 €** | **621.000 €** |
+| **Gesamtkosten** | **140.000 €** | **122.000 €** | **626.000 €** |
 | **Produktivität** | 75% | 100% | - |
 | **Einsparungen** | 61.500 € | 123.000 € | 490.500 € |
-| **Nettokosten** | **73.500 €** | **-1.000 €** | **130.500 €** |
+| **Nettokosten** | **78.500 €** | **-1.000 €** | **135.500 €** |
 
 ### **Option B: Externe Dienstleister (SaaS/Gehostet)**
 
@@ -302,7 +302,7 @@ Monat 5-6: Eigenständiger Betrieb
 
 ## 📌 Handlungsempfehlung für Kommunen
 
-1. **Pilotprojekt starten** mit open-gov-automation (6 Monate, 60.000 €)
+1. **Pilotprojekt starten** mit open-gov-automation (6 Monate, 65.000 €)
 2. **2-3 Mitarbeiter** zu KI-Operatoren ausbilden
 3. **Erfahrungen sammeln** und bei Erfolg ausrollen
 4. **Langfristig unabhängig** bleiben und Wissen in der Verwaltung halten

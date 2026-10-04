@@ -16,8 +16,8 @@
 | **Kosten pro Antrag** | ~500 € | ~125 € | **-75%** |
 | **Bürgerzufriedenheit** | 60% | 90%+ | **+30%** |
 
-**Investition:** 60.000 € (einmalig für 6 Monate Pilot)  
-**Amortisation:** < 12 Monate bei 150+ Anträgen/Jahr  
+**Investition:** 65.000 € (einmalig für 6 Monate Pilot)  
+**Amortisation:** < 12 Monate bei 160+ Anträgen/Jahr  
 **Break-even:** Ab ~80 Anträgen/Jahr
 
 ---
@@ -52,8 +52,8 @@
 |--------|--------------|---------|
 | **Hardware** | 2× ASUS GX10 + Verbindung | 10.300 € |
 | **Einrichtung** | Architektur, CI/CD, Modul-Konfiguration | 45.000 € |
-| **Schulung** | 2 Workshops + Handbuch | 4.700 € |
-| **Gesamt** | | **60.000 €** |
+| **Schulung** | 2 Workshops + Handbuch | 9.700 € |
+| **Gesamt** | | **65.000 €** |
 
 ### Laufende Kosten (nach Pilot)
 
@@ -102,34 +102,34 @@ Mit open-gov-automation:
 
 | Jahr | Investition | Einsparung | Kumulativ |
 |------|-------------|------------|-----------|
-| 1 | -60.000 € | +61.500 € | +1.500 € |
-| 2 | 0 € | +61.500 € | +63.000 € |
-| 3 | 0 € | +61.500 € | +124.500 € |
+| 1 | -65.000 € | +61.500 € | -3.500 € |
+| 2 | 0 € | +61.500 € | +58.000 € |
+| 3 | 0 € | +61.500 € | +119.500 € |
 
-**Break-even:** 12 Monate  
-**ROI nach 3 Jahren:** 207,5%
+**Break-even:** ~13 Monate  
+**ROI nach 3 Jahren:** 184%
 
 ### Szenario 2: Mittlere Kommune (200 Anträge/Jahr)
 
 | Jahr | Investition | Einsparung | Kumulativ |
 |------|-------------|------------|-----------|
-| 1 | -60.000 € | +123.000 € | +63.000 € |
-| 2 | 0 € | +123.000 € | +186.000 € |
-| 3 | 0 € | +123.000 € | +309.000 € |
+| 1 | -65.000 € | +123.000 € | +58.000 € |
+| 2 | 0 € | +123.000 € | +181.000 € |
+| 3 | 0 € | +123.000 € | +304.000 € |
 
 **Break-even:** 6 Monate  
-**ROI nach 3 Jahren:** 515%
+**ROI nach 3 Jahren:** 468%
 
 ### Szenario 3: Große Kommune (400 Anträge/Jahr)
 
 | Jahr | Investition | Einsparung | Kumulativ |
 |------|-------------|------------|-----------|
-| 1 | -60.000 € | +246.000 € | +186.000 € |
-| 2 | 0 € | +246.000 € | +432.000 € |
-| 3 | 0 € | +246.000 € | +678.000 € |
+| 1 | -65.000 € | +246.000 € | +181.000 € |
+| 2 | 0 € | +246.000 € | +427.000 € |
+| 3 | 0 € | +246.000 € | +673.000 € |
 
-**Break-even:** < 3 Monate  
-**ROI nach 3 Jahren:** 1.130%
+**Break-even:** < 4 Monate  
+**ROI nach 3 Jahren:** 1.035%
 
 ---
 
@@ -154,16 +154,16 @@ Mit open-gov-automation:
 ### Worst-Case-Szenario (konservativ)
 - **Anträge/Jahr:** 50 (sehr kleine Kommune)
 - **Einsparung pro Antrag:** 250 € (statt 500 €)
-- **Break-even:** 24 Monate
-- **ROI nach 3 Jahren:** 25%
+- **Break-even:** ~62 Monate
+- **ROI nach 3 Jahren:** −42%
 
 ### Best-Case-Szenario (optimistisch)
 - **Anträge/Jahr:** 300
 - **Einsparung pro Antrag:** 600 €
-- **Break-even:** 4 Monate
-- **ROI nach 3 Jahren:** 450%
+- **Break-even:** ~4 Monate
+- **ROI nach 3 Jahren:** 731%
 
-**Fazit:** Selbst im Worst-Case ist der Pilot **kostenneutral nach 2 Jahren** und bietet ab dann **dauerhafte Einsparungen**. Im Durchschnitt amortisiert sich die Investition **innerhalb von 12 Monaten**.
+**Fazit:** Im Regelfall (150–200 Anträge/Jahr) amortisiert sich die Investition in **rund 12–13 Monaten**; ab 160 Anträgen/Jahr in **unter 12 Monaten**. Selbst der konservative Worst-Case trägt sich innerhalb der Nutzungsdauer.
 
 ---
 

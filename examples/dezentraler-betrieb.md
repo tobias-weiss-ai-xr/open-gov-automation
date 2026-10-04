@@ -49,7 +49,7 @@ Verteilung entscheidet über drei Eigenschaften:
 └──────────────────────────────────────────┘
 ```
 
-- Status quo aus der [Projektskizze](60k-mesh-cluster-projekt.md).
+- Status quo aus der [Projektskizze](65k-mesh-cluster-projekt.md).
 - Schnellste Verbindung (200 Gb/s Direktlink, Replikation < 2 s), einfachster
   Betrieb, kein zusätzliches Netz nötig.
 - Grenze: Ein Gebäude — ein Stromanschluss — ein Risikobereich.
@@ -134,9 +134,9 @@ schneller, je mehr Anträge durchlaufen.
 |--------|--------|
 | Hardware (2× GX10 + Verbindung) | 10.300 € |
 | Expertise (Architektur, Aufbau, CI/CD, Module) | 45.000 € |
-| Schulung der KI-Operatoren | 4.700 € |
-| **Summe** | **60.000 €** |
-| **Amortisation** | **< 12 Monate** (150+ Anträge/Jahr, Break-even ~80/Jahr) |
+| Schulung der KI-Operatoren | 9.700 € |
+| **Summe** | **65.000 €** |
+| **Amortisation** | **< 12 Monate** (160+ Anträge/Jahr, Break-even ~80/Jahr) |
 
 **Verbands-Betrieb (Variante C) — Musterrechnung, 5 Kommunen:**
 
@@ -144,10 +144,10 @@ schneller, je mehr Anträge durchlaufen.
 |--------|--------|-----------|
 | Hardware (1 dual cluster) | 10.300 € | eine Anschaffung statt fünf |
 | Expertise (einmalig, wiederverwendet) | 45.000 € | identische Module, N Kommunen |
-| Gemeinsame Schulung & Betrieb | 9.700 € | Pool statt Einzelbetreuung |
-| **Summe** | **65.000 €** | |
-| **je Kommune** | **~13.000 €** | statt 60.000 € → **−78 %** |
-| 6. Kommune tritt bei | +3.000 € | → je Kommune ~11.400 € |
+| Gemeinsame Schulung & Betrieb | 14.700 € | Pool statt Einzelbetreuung |
+| **Summe** | **70.000 €** | |
+| **je Kommune** | **~14.000 €** | statt 65.000 € → **−78 %** |
+| 6. Kommune tritt bei | +3.000 € | → je Kommune ~12.200 € |
 
 > **Musterrechnung** auf Basis der Pilotannahmen. Die tatsächliche Kalkulation
 > hängt von Kommunenzahl, Antragsvolumen und bestehender IT ab — wir rechnen
@@ -193,7 +193,7 @@ aber zentral wirksam.
 
 ## Empfehlung: Aufbau-Reihenfolge
 
-1. **Start A** — Pilot, 6 Monate, 60.000 €, schnell und kontrolliert.
+1. **Start A** — Pilot, 6 Monate, 65.000 €, schnell und kontrolliert.
 2. **Ausbau B** — zweiter Standort sobald verfügbar; Resilienz ohne Umbau.
 3. **Skalierung C** — Verbands-Betrieb für mehrere Kommunen; maximale Effizienz
    und Hebelwirkung durch gemeinsame Nutzung.
@@ -202,7 +202,7 @@ aber zentral wirksam.
 
 ## Weitere Unterlagen
 
-- [Projektskizze (60k-Pilot)](60k-mesh-cluster-projekt.md)
+- [Projektskizze (65k-Pilot)](65k-mesh-cluster-projekt.md)
 - [Wirtschaftlichkeitsanalyse](wirtschaftlichkeit.md)
 - [Lösungsvergleich](loesungsvergleich.md)
 - [Live-Demo (Terminal-Simulation)](../demo.html)

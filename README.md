@@ -16,13 +16,13 @@ Der Workflow in 2 Minuten: vorausschauende Bauantrags-Prüfung, Dual-Cluster-Fai
 
 - **Problem:** Verwaltungen prüfen reaktiv — Rückläufe, lange Bearbeitung, Cloud-Abhängigkeit.
 - **Lösung:** Lokale KI-Einheit aus 2 gekoppelten ASUS-GX10-Geräten prüft Bauanträge *vor* Einreichung. DSGVO-by-Design, keine US-Cloud, kein Lock-in.
-- **Pilot:** 60.000 € für 6 Monate, danach betreiben Sie selbst. Amortisation < 12 Monate, ROI 207–515 %.
+- **Pilot:** 65.000 € für 6 Monate, danach betreiben Sie selbst. Amortisation < 12 Monate (ab 160 Anträgen/Jahr), ROI 183–468 %.
 
 ---
 
 ## Material
 
-- [Projektskizze (60k-Pilot)](examples/60k-mesh-cluster-projekt.md)
+- [Projektskizze (65k-Pilot)](examples/65k-mesh-cluster-projekt.md)
 - [Wirtschaftlichkeit & ROI](examples/wirtschaftlichkeit.md)
 - [Lösungsvergleich: Cloud / SaaS](examples/loesungsvergleich.md)
 - [Dezentraler Betrieb & Hebelwirkung](examples/dezentraler-betrieb.md)

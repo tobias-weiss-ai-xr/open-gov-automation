@@ -1,4 +1,4 @@
-# 60k-Pilot — Lokale KI-Einheit für Kommunen
+# 65k-Pilot — Lokale KI-Einheit für Kommunen
 
 > Zielgruppe: Mittelstadt (z. B. Gießen oder Marburg, ~90.000 Einwohner)
 > oder Verwaltungseinheit. On-Premise, souverän, modular.
@@ -44,14 +44,14 @@ ein Modell lokal – ohne Cloud. (Quelle: graphwiz.ai, 2026).
 
 ---
 
-## Aufwand & Budget (60.000 € gesamt)
+## Aufwand & Budget (65.000 € gesamt)
 
 | Posten | Beschreibung | Kosten |
 |--------|-------------|--------|
 | Hardware | 2× GX10 + 2× 200Gb/s-Kabel | 10.300 € |
 | Expertise | Architektur, Einrichtung, CI/CD, Modul-Konfiguration, Bereitstellung | 45.000 € |
-| Schulung der KI-Operatoren | 2 Workshops + Handbuch + praktische Übungen | 4.700 € |
-| **Gesamt** | | **60.000 €** |
+| Schulung der KI-Operatoren | 2 Workshops + Handbuch + praktische Übungen | 9.700 € |
+| **Gesamt** | | **65.000 €** |
 
 **Grundsatz:** Kein Blackbox-Produkt mit Wartungsvertrag, sondern
 *Expertise + Befähigung*. Die Kommune betreibt danach selbst — souverän, ohne laufende
